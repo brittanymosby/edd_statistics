@@ -1,4 +1,4 @@
-## Welcome to Applied Statistics (LLO8180), Spring 2021
+## Welcome to Applied Statistics, Spring 2021
 
 This is a supplementary page for Professor Mosby's section of LLO 8180 - Applied Statistics. Make sure you bookmark and check this page frequently for the most up-to-date files to use for live sessions and assignments. You should have R and RStudio installed prior to the first day of class. Instructions for installing/updating can be found [here](./Downloading Installing Updating R and RStudio.pdf).
 
