@@ -1,37 +1,29 @@
-## Welcome to GitHub Pages
+## Welcome to Applied Statistics (LLO8180), Spring 2021
 
-You can use the [editor on GitHub](https://github.com/brittanymosby/edd_statistics/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This is a supplementary page for Professor Hartigan's section of LLO 8180 - Applied Statistics. Make sure you bookmark and check this page frequently for the most up-to-date files to use for live sessions and assignments. You should have R and RStudio installed prior to the first day of class. Instructions for installing/updating can be found [here](./Downloading Installing Updating R and RStudio.pdf).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Live Session RStudio (.Rmd) Files
+These are the RStudio files and datasets that we will use for our live session meetings each week. While you don't have to run the code in advance of class, some of you might prefer to do so. I will upload all code at least 24 hours before our class meetings.
+1. Week 1 - [Introduction Rmd File](./Week 1_Introduction to R.Rmd)
 
-### Markdown
+### Polling Questions (with answers)
+In most class sessions, we will begin with polling questions. You can find the questions and answers here (after each class session).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Formula Slides
+For applicable weeks, I will upload slides with that week's important formulas.
 
-```markdown
-Syntax highlighted code block
+### Assignments
+Each assignment (problem set) is worth 100 points. The problem sets should be uploaded to the async before live session on their given due date. All assignment submissions should include two files:
+1. Your .Rmd code file
+2. Your "knit" assignment file. The knit file can be an html, word, or pdf document (please choose one and do not submit it in multiple formats). 
 
-# Header 1
-## Header 2
-### Header 3
+There may be a penalty for submissions not meeting these requirements.
 
-- Bulleted
-- List
+| File      | Due Date          |
+|:-------------|:------------------|
+| [Assignment 1 pdf](./Assignment-1.pdf), [Assignment 1 Rmd file](./Assignment 1.Rmd), [Assignment 1 data file](./phd.txt) | Wednesday 1/27 |
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/brittanymosby/edd_statistics/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Additional Useful Files
+* [Course Syllabus](./llo_8180_syllabus.pdf)
+* [Due dates for the semester](./Spring 2021 LLO8180 due dates_011121.xlsx)
+* [Base R Reference Card - Common Commands](./Base R Cheat Sheet.pdf)
