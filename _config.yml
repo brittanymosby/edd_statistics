@@ -3,3 +3,5 @@ title: LLO 8180 Applied Statistics
 description: Course files and content for the Applied Statistics course.
 show_downloads: true
 google_analytics:
+
+theme: jekyll-theme-slate
