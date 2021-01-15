@@ -13,9 +13,9 @@ In most class sessions, we will begin with polling questions. You can find the q
 For applicable weeks, I will upload slides with that week's important formulas.
 
 ### Assignments
-Each assignment (problem set) is worth 100 points. The problem sets should be uploaded to the async before live session on their given due date. All assignment submissions should include two files:
+Each assignment (problem set) is worth 100 points. The problem sets should be uploaded to the LMS before 7PM (CT) on their given due date. All assignment submissions should include two files:
 1. Your .Rmd code file
-2. Your "knit" assignment file. The knit file can be an html, word, or pdf document (please choose one and do not submit it in multiple formats). 
+2. Your "knitted" assignment file. The knit file can be an html, word, or pdf document (you only need to choose one, you do not need to submit it in multiple formats). 
 
 There may be a penalty for submissions not meeting these requirements.
 
