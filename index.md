@@ -10,7 +10,7 @@ These are the RStudio files and datasets that we will use for our live session m
 In most class sessions, we will begin with polling questions. You can find the questions and answers here (after each class session).
 
 ### Formula Slides
-For applicable weeks, I will upload slides with that week's important formulas.
+- [Week 2 Formulas](./Week 2 Formulas.pptx)
 
 ### Assignments
 Each assignment (problem set) is worth 100 points. The problem sets should be uploaded to the LMS before 7PM (CT) on their given due date. All assignment submissions should include two files:
@@ -22,6 +22,7 @@ There may be a penalty for submissions not meeting these requirements.
 | File      | Due Date          |
 |:-------------|:------------------|
   | [Assignment 1 pdf](./Assignment-1.pdf), [Assignment 1 Rmd file](./Assignment 1.Rmd), [Assignment 1 data file](./phd.txt) | Thursday 1/28 |
+  | Assignment 2 | Thursday 2/11 |
 
 ### Additional Useful Files
 * [Course Syllabus](./llo_8180_syllabus.pdf)
