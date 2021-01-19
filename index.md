@@ -1,24 +1,23 @@
-## Welcome to Applied Statistics, Spring 2021
+## Welcome to Applied Stats, Spring 2021
 
 This is a supplementary page for Professor Mosby's section of LLO 8180 - Applied Statistics. Make sure you bookmark and check this page frequently for the most up-to-date files to use for live sessions and assignments. You should have R and RStudio installed prior to the first day of class. Instructions for installing/updating can be found [here](./Downloading Installing Updating R and RStudio.pdf).
 
 ### Live Session RStudio (.Rmd) Files
-These are the RStudio files and datasets that we will use for our live session meetings each week. While you don't have to run the code in advance of class, some of you might prefer to do so. I will upload all code at least 24 hours before our class meetings.
-1. Week 1 - [Introduction Rmd File](./Week 1_Introduction to R.Rmd)
-2. Week 2 - [Summary Statistics Rmd File](./Week 2_Summary Statistics.Rmd), [Data file](./week2data.txt)
+These are the RStudio files and data files that we will use for our live session meetings each week. While you don't have to run the code in advance of class, some of you might prefer to do so. I will upload all code at least 24 hours before our class meetings.
+- Week 1 - [Introduction Rmd File](./Week 1_Introduction to R.Rmd)
+- Week 2 - [Summary Statistics Rmd File](./Week 2_Summary Statistics.Rmd), [Data file](./week2data.txt)
 
 
 ### Formula Slides
+Important formulas from the Async lecture slides.
 - [Week 2 Formulas](./Week 2 Formulas.pptx)
 
 ---
 
 ### Assignments
-Each assignment (problem set) is worth 100 points. The problem sets should be uploaded to the LMS before 7PM (CT) on their given due date. All assignment submissions should include two files:
+Each assignment is worth 100 points. Assignments should be uploaded to the LMS (2VU) before 7PM (CT) on their given due date. Submissions should include two files:
 1. Your .Rmd code file
 2. Your "knitted" assignment file. The knit file can be an html, word, or pdf document (you only need to choose one, you do not need to submit it in multiple formats). 
-
-There may be a penalty for submissions not meeting these requirements.
 
 | File      | Due Date          |
 |:-------------|:------------------|
