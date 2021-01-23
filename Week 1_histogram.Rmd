@@ -8,7 +8,9 @@ cash <- c(.05,6,30,0,65,4.75,50,0,100,.17,15,210,2,175,42,65,2,
           12,0,30,45,7,10,80,12,28,.75,100,33,1,14,5,23,45)
 ```
 
-To create the histogram, we're going to use ggplot2, which is a really dynamic plotting package that we will use a LOT this semester and next. This means you need to install the ggplot2 package. Go down to your console below and type: install.packages("ggplot2"). Hit enter. This will install ggplot2 (remember, you can check your package list in the bottom right block in R studio to see if it installed). 
+To create the histogram, we're going to use ggplot2, which is a really dynamic plotting package that we will use a LOT this semester and next. This means you need to install the ggplot2 package. 
+*Go down to the console below and type: install.packages("ggplot2"). Hit enter.* 
+This will install ggplot2 (remember, you can check your package list in the bottom right block in R studio to see if it installed). 
 
 ```{r}
 #To actually USE ggplot, we need to make sure the library is open. 
@@ -21,10 +23,11 @@ Now, we're ready to plot our histogram (or anything else we want to plot!).
 cashdata <- data.frame(val=cash)
 
 #NOW for the plotting!
-histplot <- ggplot(cashdata, aes(x=val)) +  
-  geom_histogram(binwidth=5, color="blue", fill="pink") 
-#line 32 specifies our dataframe and then the variable we want to plot (look at your dataframe to get the name of your variable, in this case it is "val"). ggplot tells R we're building a plot, and "aes" stands for aesthetics. The beginning of the line will SAVE our plot as "histplot" (remember, you choose the name!)
-#line 22 tells R that I want it to plot a histogram (geom_histogram), I want my bin widths to be 5 (you can change this to whatever number you want) and I want my bars to be blue (you can change this) and the bars to be filled in pink (you can change this).
+histplot <- ggplot(cashdata, aes(x=val)) +  geom_histogram(binwidth=5, color="blue", fill="pink") 
+
+#the line above specifies our dataframe and then the variable we want to plot (look at your dataframe to get the name of your variable, in this case it is "val"). ggplot tells R we're building a plot, and "aes" stands for aesthetics. The beginning of the line will SAVE our plot as "histplot" (remember, you choose the name!)
+
+#the code after the + tells R that I want it to plot a histogram (geom_histogram), I want my bin widths to be 5 (you can change this to whatever number you want) and I want my bars to be blue (you can change this) and the bars to be filled in pink (you can change this).
 
 #Q: Now, what if I want to "print" this plot? What would I type next? (scroll down to see the answer)
 ```
