@@ -7,6 +7,14 @@ These are the RStudio files and data files that we will use for our live session
 - Week 1 - [Introduction Rmd File](./Week 1_Introduction to R.Rmd)
 - Week 2 - [Summary Statistics Rmd File](./Week 2_Summary Statistics.Rmd), [Data file](./week2data.txt)
 
+#### YAML Header for RStudio .Rmd Files
+If you need to add a header to your homework file, you can copy/paste the following: <br>
+`---` <br>
+`title: "Assignment #"` <br>
+`author: "Your Name"` <br>
+`date: "Add Date"` <br> 
+`output: html_document` <br>
+`---`
 
 ### Formula Slides
 Important formulas from the Async lecture slides.
