@@ -5,6 +5,7 @@ This is a supplementary page for Professor Mosby's section of LLO 8180 - Applied
 ### Live Session RStudio (.Rmd) Files
 These are the RStudio files and data files that we will use for our live session meetings each week. While you don't have to run the code in advance of class, some of you might prefer to do so. I will upload all code at least 24 hours before our class meetings.
 - Week 1 - [Introduction Rmd File](./Week 1_Introduction to R.Rmd)
+  - [Plotting Histograms Rmd File](./Week 1_Histogram.Rmd)
 - Week 2 - [Summary Statistics Rmd File](./Week 2_Summary Statistics.Rmd), [Data file](./week2data.txt)
 
 #### YAML Header for RStudio .Rmd Files
