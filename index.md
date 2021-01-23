@@ -8,6 +8,8 @@ These are the RStudio files and data files that we will use for our live session
   - [Plotting Histograms Rmd File](./Week 1_Histogram.Rmd)
 - Week 2 - [Summary Statistics Rmd File](./Week 2_Summary Statistics.Rmd), [Data file](./week2data.txt)
 
+[Formulas](./formulas.md)
+
 #### YAML Header for RStudio .Rmd Files
 If you need to add a header to your homework file, you can copy/paste the following: <br>
 `---` <br>
