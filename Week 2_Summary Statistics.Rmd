@@ -17,7 +17,7 @@ It helps to store the data in a working directory (and that way you won't have t
 
 Let's go ahead and set our working directory for this week. NOTE, a directory is a path to a folder on YOUR computer. So, if you're using my code, MY directory will not work for you. You MUST change this. 
 ```{r}
-setwd("C:/Users/blmos/Dropbox/School Things/VU Peabody/EDD LLO Teaching/LLO 8180 - Applied Statistics")
+setwd("C:/Users/blmos/OneDrive/Documents/GitHub/edd_statistics")
 ```
 IMPORTANT NOTE for PC users -- when you copy/paste a file path, the slashes will be backwards. You will have to change these manually so that they go this way: `/` (not this way: `\`). 
 
