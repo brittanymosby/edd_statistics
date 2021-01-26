@@ -4,9 +4,9 @@ This is a supplementary page for Professor Mosby's section of LLO 8180 - Applied
 
 ## Live Session RStudio (.Rmd) Files
 These are the RStudio files and data files that we will use for our live session meetings each week. While you don't have to run the code in advance of class, some of you might prefer to do so. I will upload all code at least 24 hours before our class meetings.
-- Week 1 - [Introduction Rmd File](./Week 1_Introduction to R.Rmd); [Plotting Histograms Rmd File](./Week 1_Histogram.Rmd)
-- Week 2 - [Summary Statistics Rmd File](./Week 2_Summary Statistics.Rmd), [Data file](./week2data.txt)
-- Week 3 - [Normal Probability and Z-Scores](./Week 3 - Normal Prob and Z-Scores.Rmd)
+- Week 1 - [Introduction Rmd File](./live/Week 1_Introduction to R.Rmd); [Plotting Histograms Rmd File](./Week 1_Histogram.Rmd)
+- Week 2 - [Summary Statistics Rmd File](./live/Week 2_Summary Statistics.Rmd), [Data file](./week2data.txt)
+- Week 3 - [Normal Probability and Z-Scores](./live/Week 3 - Normal Prob and Z-Scores.Rmd)
 
 ### YAML Header for RStudio .Rmd Files
 If you need to add a header to your homework file, you can copy/paste the following: <br>
@@ -25,7 +25,7 @@ Each assignment is worth 100 points. Assignments should be uploaded to the LMS (
 
 | File      | Due Date          |
 |:-------------|:------------------|
-  | [Assignment 1 pdf](./Assignment-1.pdf), [Assignment 1 Rmd file](./Assignment 1.Rmd), [Assignment 1 data file](./phd.txt) | Thursday 1/28 |
+  | [Assignment 1 pdf](./assignments/Assignment-1.pdf), [Assignment 1 Rmd file](./assignments/Assignment 1.Rmd), [Assignment 1 data file](./assignments/phd.txt) | Thursday 1/28 |
   | Assignment 2 | Thursday 2/11 |
 
 ### Additional Useful Files
