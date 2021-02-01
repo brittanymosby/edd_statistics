@@ -1,12 +1,10 @@
-```{r}
-#DELETE THIS CODE CHUNK BEFORE KNITTING
-```
----
+(Make sure to add --- above and below the header text below)
+
 title: "Applied Statistics - Assignment 2"
 author: "YOUR NAME HERE"
 date: "due 2/11/20"
 
----
+
 This is due prior to the beginning of live session on the due date. Please submit as a knit file (preferably HTML). Round all reported statistics (when applicable) to the nearest hundredths place (i.e., two decimal places). 
 
 _Please identify students with whom you worked on this assignment here (MAX of four to a group)_:
