@@ -5,8 +5,7 @@
 title: "Applied Statistics - Assignment 2"
 author: "YOUR NAME HERE"
 date: "due 2/11/20"
-output: 
-    html_document: default
+
 ---
 This is due prior to the beginning of live session on the due date. Please submit as a knit file (preferably HTML). Round all reported statistics (when applicable) to the nearest hundredths place (i.e., two decimal places). 
 
