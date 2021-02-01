@@ -1,4 +1,6 @@
-~DELETE THIS LINE OF TEXT BEFORE KNITTING~
+```{r}
+#DELETE THIS CODE CHUNK BEFORE KNITTING
+```
 ---
 title: "Applied Statistics - Assignment 2"
 author: "YOUR NAME HERE"
