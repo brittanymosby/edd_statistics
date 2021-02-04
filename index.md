@@ -7,6 +7,7 @@ These are the RStudio files and data files that we will use for our live session
 - Week 1 - [Introduction Rmd File](./live/Week 1_Introduction to R.Rmd); [Plotting Histograms Rmd File](./Week 1_Histogram.Rmd)
 - Week 2 - [Summary Statistics Rmd File](./live/Week 2_Summary Statistics.Rmd), [Data file](./live/week2data.txt)
 - Week 3 - [Normal Probability and Z-Scores](./live/Week 3 - Normal Prob and Z-Scores.Rmd)
+- Week 4 - [Sampling Distributions](./live/Week 4 - Sampling Distributions.Rmd)
 
 
 ## Assignments
