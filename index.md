@@ -8,15 +8,6 @@ These are the RStudio files and data files that we will use for our live session
 - Week 2 - [Summary Statistics Rmd File](./live/Week 2_Summary Statistics.Rmd), [Data file](./live/week2data.txt)
 - Week 3 - [Normal Probability and Z-Scores](./live/Week 3 - Normal Prob and Z-Scores.Rmd)
 
-### YAML Header for RStudio .Rmd Files
-If you need to add a header to your homework file, you can copy/paste the following: <br>
-`---` <br>
-`title: "Assignment #"` <br>
-`author: "Your Name"` <br>
-`date: "Add Date"` <br> 
-`output: html_document` <br>
-`---` <br>
----
 
 ## Assignments
 Each assignment is worth 100 points. Assignments should be uploaded to the LMS (2VU) before 7PM (CT) on their given due date. Submissions should include two files:
@@ -26,7 +17,7 @@ Each assignment is worth 100 points. Assignments should be uploaded to the LMS (
 | File      | Due Date          |
 |:-------------|:------------------|
   | [Assignment 1 pdf](./assignments/Assignment-1.pdf), [Assignment 1 Rmd file](./assignments/Assignment 1.Rmd), [Assignment 1 data file](./assignments/phd.txt) | Thursday 1/28 |
-  | Assignment 2 | Thursday 2/11 |
+  | [Assignment 2](./assignments/Assignment-2.html), [Assignment 2 Rmd file](./assignments/Assignment 2.Rmd) | Thursday 2/11 |
 
 ### Additional Useful Files
 * [All the formula slides from Async lecture](./formulas.md)
