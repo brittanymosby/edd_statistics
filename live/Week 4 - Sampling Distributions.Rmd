@@ -1,6 +1,6 @@
 ---
 title: "Week 4 - Normal Probabilities in Sampling Distributions"
-author: "Lacey Hartigan"
+author: "BL Mosby"
 date: "2/3/21"
 output:
   html_document: default
