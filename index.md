@@ -11,6 +11,8 @@ These are the RStudio files and data files that we will use for our live session
 
 ***Click [here](./formulas.md) for just the formula slides from Async lecture.***
 
+***Click [here](./polling.md) for the warm-up questions from Live session.***
+
 ## Assignments
 Each assignment is worth 100 points. Assignments should be uploaded to the LMS (2VU) before 7PM (CT) on their given due date. Submissions should include two files:
 1. Your .Rmd code file
