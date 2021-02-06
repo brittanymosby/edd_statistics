@@ -1,4 +1,4 @@
-# Week 1 Questions
+# Week 2 Questions - Summary Statistics
 
 The computation of central tendency is ___ for samples and populations.
   + different
