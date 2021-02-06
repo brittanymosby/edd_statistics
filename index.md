@@ -9,6 +9,9 @@ These are the RStudio files and data files that we will use for our live session
 - Week 3 - [Normal Probability and Z-Scores](./live/Week 3 - Normal Prob and Z-Scores.Rmd)
 - Week 4 - [Sampling Distributions](./live/Week 4 - Sampling Distributions.Rmd)
 
+***Click [here](./formulas.md) for just the formula slides from Async lecture.***
+
+***Click [here](./polling.md) for the warm-up questions from Live session.***
 
 ## Assignments
 Each assignment is worth 100 points. Assignments should be uploaded to the LMS (2VU) before 7PM (CT) on their given due date. Submissions should include two files:
@@ -21,7 +24,6 @@ Each assignment is worth 100 points. Assignments should be uploaded to the LMS (
   | [Assignment 2](./assignments/Assignment-2.html), [Assignment 2 Rmd file](./assignments/Assignment 2.Rmd) | Thursday 2/11 |
 
 ### Additional Useful Files
-* [All the formula slides from Async lecture](./formulas.md)
 * [Course Syllabus](./llo_8180_syllabus.pdf)
 * [Due dates for the semester](./Spring 2021 LLO8180 due dates_011121.xlsx)
 * [Base R Reference Card - Common Commands](./Base R Cheat Sheet.pdf)
