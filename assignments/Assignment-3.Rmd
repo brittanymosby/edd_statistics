@@ -80,7 +80,7 @@ e.	Use R (the pt function) to compute the p-value:
 
 ```
 
-Use the t-test function in R to confirm results in parts (c) and (d)
+f. Use the t-test function in R to confirm results in parts (c) and (d)
 ```{r}
 
 ```
