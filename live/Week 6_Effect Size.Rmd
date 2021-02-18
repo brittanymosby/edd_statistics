@@ -1,0 +1,81 @@
+---
+title: "Week 6 - Power and Effect Size; One Sample t-Test"
+author: "BL Mosby"
+date: "2/17/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This week we learn how to conduct a one-sample t-test in R. Let's use R to perform calculations for the "couples" example.
+**RQ: Are the American couples significantly different from European couples (our population)?**
+
+Writing the hypotheses in words and symbols:
+
+American couples spend the same amount of time discussing marital problems as European couples.
+$$H_0: \mu_{am} = \mu_{euro}$$
+American couples spend a different amount of time discussing marital problems as compared to European couples.
+$$H_1: \mu_{am} \neq \mu_{euro}$$
+
+To calculate the t-statistic, recall the formula: $$t=\frac{(M - \mu_0)}{(s\div\sqrt{n})}$$
+
+```{r}
+ttstat<-(2.6-3)/(1.9/sqrt(70))
+ttstat
+```
+
+Next, find the critical value using R using the function: `qt(alpha/#tails, df))`
+
+```{r}
+ttcrit<-qt(.05/2, 69)
+ttcrit
+```
+Or, we could calculate the p-value. With a t-test, instead of `pnorm`, we will use `pt` for the Student-T distribution, with a given df. We still have to multiply the probability for two-tailed tests (note: the t-table makes this easier).
+We still need to be careful with the `lower.tail` command because we have a negative t-statistic we need to use TRUE.
+
+```{r}
+tpval<-2 * pt(-1.76139, df=69, lower.tail=TRUE)
+tpval
+```
+
+Based on this p-value, our decision would be to *fail to reject the H0.*
+
+**Conclusion: A one-sample t-test revealed that there was not evidence of a statistically significant difference between American couples (M=2.6) and European couples (M=3) on time spent discussing marital problems; t(69) = -1.76, p > 0.05.**
+
+---
+
+Now, let's learn how to conduct a t-test when given a dataset: let's look at sample data given for example 9.1 in the book:
+```{r}
+#Create the dataset as a vector of values
+OCD <- c(20,60,48,92,50,82,48,90,30,68,43,54,60,62,94,67,63,85)
+
+
+#To run a t-test on this data, we will do the following:
+t.test(OCD, mu=77.43, conf.level=.95) #note that conf.level = 1-alpha
+```
+
+Examine the p-value. Since it is less than alpha (.05) then our decision will be to *reject H0* in favor of the alternative.
+
+Once we have established a statistically significant result, it is appropriate to calculate effect size, using Cohen's d: $$d=\frac{M-\mu_0}{s}$$
+```{r}
+#Find the mean and standard deviation of the sample data:
+mu_samp<-mean(OCD)
+sd_samp<-sd(OCD)
+
+#Then calculate Cohen's d
+cohen_d<- (mu_samp-77.43)/(sd_samp)
+cohen_d
+```
+
+Interpreting the effect size (absolute value):
+
+small <.2
+
+medium/moderate .2 to .8; 
+
+large >.8
+
+**Conclusion: A one-sample two-tailed t-test revealed a statistically significant difference between our sample mean (M=62) and our population (Mu=77.43), t(17) = -3.13, p < 0.05, d = -0.74. Cohen's d signified a moderate effect.**
+
