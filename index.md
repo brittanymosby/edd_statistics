@@ -9,6 +9,7 @@ These are the RStudio files and data files that we will use for our live session
 - Week 3 - [Normal Probability and Z-Scores](./live/Week 3 - Normal Prob and Z-Scores.Rmd)
 - Week 4 - [Sampling Distributions](./live/Week 4 - Sampling Distributions.Rmd)
 - Week 5 - [Test Statistics and P-values](./live/Week 5 - Testing.Rmd)
+- Week 6 - [Effect size and one-sample t-Tests](./live/Week 6_Effect Size.Rmd), [HTML file with formatting](./live/Week 6_Effect Size.html)
 
 ***Click [here](./formulas.md) for just the formula slides from Async lecture.***
 
