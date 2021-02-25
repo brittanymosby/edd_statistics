@@ -10,6 +10,7 @@ These are the RStudio files and data files that we will use for our live session
 - Week 4 - [Sampling Distributions](./live/Week 4 - Sampling Distributions.Rmd)
 - Week 5 - [Test Statistics and P-values](./live/Week 5 - Testing.Rmd)
 - Week 6 - [Effect size and one-sample t-Tests](./live/Week 6_Effect Size.Rmd), [HTML file with formatting](./live/Week-6_Effect-Size.html)
+- Week 7 - [Two-sample t-Tests](./live/Week 7_Two Sample.Rmd)
 
 ***Click [here](./formulas.md) for just the formula slides from Async lecture.***
 
