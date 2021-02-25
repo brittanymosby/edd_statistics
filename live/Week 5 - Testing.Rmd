@@ -1,6 +1,4 @@
-```{r}
-REMOVE ME BEFORE BEGINNING!
-```
+
 ---
 title: "Week 5 - Test Statistics & P-values"
 author: "BL Mosby"
