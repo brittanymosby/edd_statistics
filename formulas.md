@@ -6,3 +6,4 @@ These are the slides from each week of Async lecture with important formulas/def
 - [Week 3 Formulas](./Week 3 Formulas.pptx)
 - [Week 4 Formulas](./Week 4 Formulas.pptx)
 - [Week 5 Formulas](./Week 5 Formulas.pptx)
+- [Week 6 Formulas](./Week 6 Formulas.pptx)
