@@ -1,13 +1,13 @@
 ---
 title: "Applied Statistics - Assignment 4"
 author: "YOUR NAME HERE"
-date: "due 3/15/21"
+date: "due 3/11/21"
 output: 
-  pdf_document: default
+  html_document: default
 ---
 
 
-This is due prior to the beginning of live session on the due date. Please submit your knit file (you can use html, pdf, or word) to the LMS. Round all reported statistics (when applicable) to the nearest hundredths place (i.e., two decimal places). 
+This is due prior to the beginning of live session on the due date. Please submit your knit file to the LMS. Round all reported statistics (when applicable) to the nearest hundredths place (i.e., two decimal places). 
 
 Please identify students with whom you worked on this assignment here (MAX of four to a group):
 
