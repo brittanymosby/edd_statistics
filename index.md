@@ -25,7 +25,8 @@ Each assignment is worth 100 points. Assignments should be uploaded to the LMS (
 |:-------------|:------------------|
   | [Assignment 1 pdf](./assignments/Assignment-1.pdf), [Assignment 1 Rmd file](./assignments/Assignment 1.Rmd), [Assignment 1 data file](./assignments/phd.txt) | Thursday 1/28 |
   | [Assignment 2](./assignments/Assignment-2.html), [Assignment 2 Rmd file](./assignments/Assignment 2.Rmd) | Thursday 2/11 |
-  | [Assignment 3](./assignments/Assignment-3.html), [Assignment 3 Rmd file](./assignments/Assignment-3.Rmd), [weights.txt](./assignments/weights.txt) | Thursday 2/25 |
+  | [Assignment 3](./assignments/Assignment-3.html), [Assignment 3 Rmd file](./assignments/Assignment-3.Rmd), [Weights data file](./assignments/weights.txt) | Thursday 2/25 |
+  | [Assignment 4](./assignments/Assignment 4.Rmd), [Colors data file](./assignments/color.txt), [Sleep data file](./assignments/sleep.txt) | Thursday 3/11 |
 
 ### Additional Useful Files
 * [Course Syllabus](./llo_8180_syllabus.pdf)
