@@ -1,0 +1,92 @@
+---
+title: "Week 9 R Code"
+output: html_notebook
+---
+
+# Week 9 Live session R code
+
+This week we will learn how to conduct a one-way ANOVA in R. Recall that a one-way ANOVA is used when comparing one factor (independent variable) among two or more groups. We will compare the variance *between groups* and *within groups* to determine if there is a statistically significant difference in means among the factor levels.
+
+
+Let's look at the depression example from async lecture again.
+```{r setup}
+#First you will need to import the dataset. If you do not know the filepath where your documents are saved, you can use the menu above: Session->Set Working Directory->Choose Directory.
+
+setwd("C:/Users/blmos/Dropbox/School Things/VU Peabody/LLO 8180 - Applied Statistics/R Code")
+depressed <- read.table("depression.txt", header=T, sep="\t")
+
+head(depressed) #this will display the first few rows of the dataset, to ensure it loaded correctly.
+```
+
+
+Next, we will run a one-way ANOVA using R. The dependent variable should go first, followed by the independent variable (factor).
+```{r ANOVA}
+#Here we create a new object called 'anova1'; the function that completes the ANOVA analysis is 'aov'
+anova1 <- aov(Depression ~ Treatment, data=depressed)
+
+summary(anova1) #this will display the results
+```
+
+
+Notice that the *between* groups source is labeled "Treatment" and the *within* groups source is labeled "Residuals" in R. The summary here is a little different than the async PPT, but the values are all here. This summary also includes the p-value for the test, which we will compare to alpha (0.05 in most cases).
+
+Since p-value is less than alpha, we will reject the null hypothesis that all means are equal. However, we now need to do a post hoc test, to figure out which groups' means are significantly different. Note that you would **NOT** conduct post hoc analysis if the result was not statistically significant.
+
+```{r Post_Hoc}
+#This will run the Tukey HSD (Honestly Significant Difference) test. Notice that we are using the saved results of the anova1 stored above.
+TukeyHSD(anova1)
+```
+Interpreting Tukey HSD: a pairwise comparison is made between each level of the factor (independent variable). The output provides the difference in means, the bounds of a 95% confidence interval for the difference in means of each pair, and an adjusted p-value. We will use alpha here again-- there is a significant difference in the means between Placebo and CBT, Placebo and Combination, and Placebo and Medication.
+
+
+Next, we will want to report the effect size. R has a package that will do this for us.
+```{r effect_size}
+#install.packages("sjstats") You only need to install new packages once per session.
+library(sjstats)
+
+eta_sq(anova1)
+```
+
+
+Finally, let's find the mean score for each group, in order to write a conclusion in APA format.
+```{r group_means}
+mean(depressed$Depression[depressed$Treatment=="Placebo"])
+mean(depressed$Depression[depressed$Treatment=="Med"])
+mean(depressed$Depression[depressed$Treatment=="CBT"])
+mean(depressed$Depression[depressed$Treatment=="Comb"])
+```
+_Conclusion_:
+A one-way ANOVA at alpha level .05 revealed significant differences between depression scores by the type of treatment group an individual was in, F(3,16)=4.68, p<0.05, $\eta^2$=0.47. Forty-seven percent of the variance in depression scores was accounted for by treatment group. Posthoc analyses (Tukey's HSD) revealed that individuals in the placebo group had significantly higher depression scores (mean=18.6) than each of the other treatment groups (medicine=12.4, CBT=12.6, combination=13.0). There were no other significant pairwise differences.
+
+---
+
+On the other hand, consider the following example: Students were offered one of three rewards (or no reward) for high performance on a test. The promised reward and scores are provided in the rewards.txt file.
+
+```{r}
+reward<-read.table("rewards.txt", header=T, sep="\t")
+head(reward)
+```
+
+
+```{r}
+anova2<-aov(Score~Reward, data=reward)
+summary(anova2)
+```
+
+Here, the p-value is NOT less than alpha, so we fail to reject the null hypothesis. An appropriate APA conclusion might look like:
+
+A one-way ANOVA at alpha level .05 revealed no significant differences between scores by the type of reward a student was offered, F(3,16)=0.22, p>0.05.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now you try! Read the information below.
+
+Calcium is an essential mineral that regulates the heart, is important for blood clotting and for building healthy bones. The National Osteoporosis Foundation recommends a daily calcium intake of 1000-1200 mg/day for adult men and women. While calcium is contained in some foods, most adults do not get enough calcium in their diets and take supplements. Unfortunately some of the supplements have side effects such as gastric distress, making them difficult for some patients to take on a regular basis.  
+
+A study is designed to test whether there is a difference in mean daily calcium intake in adults with normal bone density, adults with osteopenia (a low bone density which may lead to osteoporosis) and adults with osteoporosis. Adults 60 years of age with normal bone density, osteopenia and osteoporosis are selected at random from hospital records and invited to participate in the study. Each participant's daily calcium intake is measured based on reported food intake and supplements.
+
+Now, upload the bones data.txt set and run a similar one-way ANOVA analysis. (Hint: copy code from the code chunks above, making sure to change the file/data names. You can create multiple chunks, or run everything at once.)
+
+
+
+
+
