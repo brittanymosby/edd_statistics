@@ -12,7 +12,7 @@ These are the RStudio files and data files that we will use for our live session
 - Week 6 - [Effect size and one-sample t-Tests](./live/Week 6_Effect Size.Rmd), [HTML file with formatting](./live/Week-6_Effect-Size.html)
 - Week 7 - [Two-sample t-Tests](./live/Week 7_Two Sample.Rmd)
 - Week 8
-- Week 9 - [One-Way ANOVA](./live/Week 9_ANOVA.Rmd), [depression data](./live/depressed.txt), [rewards data](./live/rewards.txt), [bones.txt](./live/bones.txt)
+- Week 9 - [One-Way ANOVA](./live/Week 9_ANOVA.Rmd), [depression data](./live/depression.txt), [rewards data](./live/rewards.txt), [bones.txt](./live/bones.txt)
 
 ***Click [here](./formulas.md) for just the formula slides from Async lecture.***
 
