@@ -1,0 +1,33 @@
+Timing	Intensity	Sleep
+Morning	Low	29
+Morning	Low	39
+Morning	Low	26
+Morning	Low	43
+Morning	Low	38
+Morning	Medium	15
+Morning	Medium	12
+Morning	Medium	39
+Morning	Medium	16
+Morning	Medium	18
+Morning	High	9
+Morning	High	29
+Morning	High	10
+Morning	High	24
+Morning	High	13
+Evening	Low	35
+Evening	Low	29
+Evening	Low	42
+Evening	Low	41
+Evening	Low	33
+Evening	Medium	37
+Evening	Medium	33
+Evening	Medium	44
+Evening	Medium	38
+Evening	Medium	43
+Evening	High	46
+Evening	High	37
+Evening	High	39
+Evening	High	44
+Evening	High	39
+
+

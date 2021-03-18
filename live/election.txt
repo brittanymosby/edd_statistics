@@ -1,0 +1,13 @@
+county	party	percent
+Jefferson	Dem	33.5
+Jefferson	Rep	36.5
+Lewis/Clark	Dem	42.5
+Lewis/Clark	Rep	35.7
+Powder River	Dem	22.3
+Powder River	Rep	47.3
+Stillwater	Dem	32.4
+Stillwater	Rep	38.2
+Sweet Grass	Dem	21.9
+Sweet Grass	Rep	48.8
+Yellowstone	Dem	35.7
+Yellowstone	Rep	40.4

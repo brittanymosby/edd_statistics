@@ -1,0 +1,201 @@
+---
+title: "Week 10: Two-Way ANOVA"
+output: html_document
+---
+# Week 10 Live session R code
+
+This week we will learn how to conduct a two-way ANOVA in RStudio
+
+```{r}
+setwd("C:/Users/blmos/Dropbox/School Things/VU Peabody/EDD LLO Teaching/LLO 8180 - Applied Statistics/FALL 2020/R Code")
+```
+
+Let's take a look at the sleep and exercise data from async. This chunk will read in the data and then create a two-way ANOVA of Timing and Intensity's potential effect(s) on sleep.
+
+```{r}
+#Let's look at the sleep data from async
+sleepy <- read.table("sleepdata.txt", header=T, sep="\t")
+
+#NAMEOFANOVA <- aov(DV~FACTOR_A + FACTOR_B + INTERACTION_AxB, data=DATASETNAME)
+sleep.aov <- aov(Sleep ~ Timing + Intensity + Timing:Intensity, data=sleepy)
+summary(sleep.aov)
+```
+
+Now let's create an interaction plot using R
+```{r}
+interaction.plot(sleepy$Intensity, sleepy$Timing, sleepy$Sleep,
+                 ylim=range(15,45), xlab="Intensity",
+                 ylab="Sleep",
+                 col=c("blue","red"), main="Plot of Timing x Intensity")
+```
+
+There is a problem because R is ordering Low, Medium and High in alphabetical order but that doesn't make sense for this problem. However, we can force R to create it how we want it -- Low, Medium and High by using the reorder function.
+
+```{r}
+reorder <- factor(sleepy$Intensity, levels=c("Low","Medium","High"))
+
+interaction.plot(reorder, sleepy$Timing,  sleepy$Sleep,
+                 ylim=range(15,45),xlab="Intensity",
+                 ylab="Sleep",
+                 col=c("red","blue"), main="Plot of Timing x Intensity")
+```
+Since there is a significant interaction, we don't use eta squared, instead we look at simple main effects. Basically you will rerun ANOVA for each level of one of the factors. You do this for factors with >2 levels (if a factor has only 2 levels, then your main effect from your two-way ANOVA table already has the info you need).
+
+Let's look at each level Timing. We will use the subset function to create datasets containing only one level of Timing and examine each one of those. 
+
+This code creates a subset of your data that only includes "morning" exercisers & one for "evening"
+
+```{r}
+#Subset with Morning exercisers only
+sleep_AM <- subset(sleepy, Timing == "Morning")
+
+#Subest with Evening exercisers only 
+sleep_PM <- subset(sleepy, Timing == "Evening")
+
+#View the datasets to make sure they're what we're expecting
+head(sleep_AM)
+head(sleep_PM)
+
+```
+
+One-way ANOVA on just the Morning data - this is the effect of intensity on sleep for ONLY morning exercisers:
+```{r}
+#NAMEOFONEWAYANOVA <- aov(DV~FACTORYOUDIDNTSUBSETBY, data=SUBSETDATASETNAME)
+sleepAM.aov <- aov(Sleep~Intensity, data=sleep_AM)
+
+summary(sleepAM.aov)
+```
+
+One-way ANOVA on just the Evening data - this is the effect of intensity on sleep for ONLY evening exercisers:
+```{r}
+sleepPM.aov <- aov(Sleep~Intensity, data=sleep_PM)
+
+summary(sleepPM.aov)
+```
+**IMPORTANT NOTE!** For our follow-up simple main effects, we must adjust our value for alpha. We divide alpha up by how many comparisons (or one-way ANOVAs) we're running. In this case - we're running two (one for evening, one for morning). So, $$\alpha = \frac{.05}{2} = .025$$. THAT is the threshold we will judge our simple main effects tests by (NOT p<.05). NOTE: we ONLY use this adjusted alpha value for these follow-up (or post hoc) one-way ANOVA tests... we still use p<.05 for our main effects two-way ANOVA that we did initially.
+
+
+Looking at our one-way ANOVAs we see that the morning subset DID contain a significant effect (p<.025) of intensity on sleep, but the evening subset did NOT (p>.025). 
+
+Now, because the morning subset DID have this effect, I want to know exactly what the relationship was... so, I'm going to find the means of sleep within each intensity group in the morning subset, so I can see what the relationship was.
+
+```{r}
+#Tukey will do a pairwise comparison of each of the means for low, medium, and high intensity
+TukeyHSD(sleepAM.aov)
+
+#Mean for SLEEP in the LOW intensity group within the SleepMorning data subset
+mean(sleep_AM$Sleep[sleep_AM$Intensity=="Low"])
+
+#Mean for SLEEP in the MEDIUM intensity group within the SleepMorning data subset
+mean(sleep_AM$Sleep[sleep_AM$Intensity=="Medium"])
+
+#Mean for SLEEP in the HIGH intensity group within the SleepMorning data subset
+mean(sleep_AM$Sleep[sleep_AM$Intensity=="High"])
+```
+
+**Conclusion:** A two-way ANOVA revealed that timing of exercise had a significant main effect on sleep, F(1,24)=30.78, p<.05 ($\eta^2$ = 0.42) and a significant interaction between timing and intensity of exercise, F(2,24)=6.98, p<.05. There was no main effect for intensity (F(2,24)=2.50, p>.05).
+
+A post hoc simple main effects test for each level of the timing variable was conducted. The intensity effect in the morning group was significant (p<.025), but the intensity effect was not significant for the evening group (p=0.27). In the morning group, the mean time to get to sleep was 35 minutes for low intensity exercisers, 20 minutes for medium intensity, and 17 minutes for high intensity. This would lead the conclusion that the more intense one exercises in the morning, the faster one will get to sleep that night. 
+
+---
+
+Here is another example, using voter data from different counties in Montana. The percentage of voters for each major political party was recorded after a recent national election.
+
+```{r}
+voting <- read.table("election.txt", header=T, sep="\t")
+head(voting)
+
+votes.aov <- aov(percent ~ county + party + county:party, data=voting)
+summary(votes.aov)
+```
+What can we conclude about the effects of location (county) and party on voting in Montana?
+
+
+---
+
+Here, we’ll use the built-in R data set named ToothGrowth. It contains data from a study evaluating the effect of vitamin C on tooth growth in Guinea pigs. 
+
+The experiment was performed on 60 pigs, where each animal received one of three daily dose levels of Vitamin C (0.5mg, 1mg, or 2mg) by one of two delivery methods, orange juice or ascorbic acid (a form of vitamin C and coded as VC). Tooth length was then measured.
+```{r}
+my_data<-ToothGrowth
+my_data$dose <- factor(my_data$dose, 
+                  levels = c(0.5, 1, 2),
+                  labels = c("D0.5", "D1", "D2"))
+
+#This table shows the number of subjects in each group
+table(my_data$supp, my_data$dose)
+```
+
+```{r}
+dosage.aov <- aov(len ~ supp + dose + supp:dose, data=my_data)
+summary(dosage.aov)
+```
+
+```{r}
+reordr <- factor(my_data$dose, levels=c("D0.5", "D1", "D2"))
+
+interaction.plot(reordr,  my_data$supp, my_data$len,
+                 ylim=range(1,35),xlab="Dose Amount",
+                 ylab="Tooth Length",
+                 col=c("red","blue"), main="Plot of Dose x Method")
+```
+
+
+The main effects of amount (dose) and method (supp) are significant, as well as the interaction between amount and method. Now we will conduct post hoc analysis.
+
+```{r}
+my_data_VC <- subset(my_data, supp == "VC")
+my_data_OJ <- subset(my_data, supp == "OJ")
+
+head(my_data_VC)
+head(my_data_OJ)
+```
+
+One-way ANOVA on just the vitamin C method - this is the effect of dosage on length for ONLY the ascorbic acid (vitamin C) group
+
+```{r}
+data_VC.aov <- aov(len~dose, data=my_data_VC)
+summary(data_VC.aov)
+```
+```{r}
+TukeyHSD(data_VC.aov)
+```
+What does this analysis tell us about dosage amounts and the ascorbic acid method?
+
+Now, a one-way ANOVA on just the orange juice method - this is the effect of dosage on length for ONLY orange juice group
+
+```{r}
+data_OJ.aov <- aov(len~dose, data=my_data_OJ)
+summary(data_OJ.aov)
+```
+
+```{r}
+TukeyHSD(data_OJ.aov)
+```
+
+Complete the rest of the analysis and write a conclusion (in APA format.)
+
+
+---
+~~~~A more difficult example~~~~
+Response: Number of inquiries resulting from advertisement
+Factor 1: day of week (Monday through Friday)
+Factor 2: section of newspaper (news, business, sports)
+
+```{r}
+inquiries <- read.table("ads.txt", header=T, sep="\t")
+
+#NAMEOFANOVA <- aov(DV~FACTOR_A + FACTOR_B + INTERACTION_AxB, data=DATASETNAME)
+ads.aov <- aov(inquiries ~ weekday + section + weekday:section, data=inquiries)
+summary(ads.aov)
+```
+
+
+```{r}
+reorder2 <- factor(inquiries$weekday, levels=c("Monday","Tuesday","Wednesday","Thursday","Friday"))
+interaction.plot(reorder2,  inquiries$section, inquiries$inquiries,
+                 ylim=range(1,15),xlab="Weekday",
+                 ylab="Number of Ad Inquiries",
+                 col=c("red","blue"), main="Plot of Weekday x Section")
+```
+
