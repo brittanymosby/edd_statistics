@@ -13,6 +13,7 @@ These are the RStudio files and data files that we will use for our live session
 - Week 7 - [Two-sample t-Tests](./live/Week 7_Two Sample.Rmd)
 - Week 8
 - Week 9 - [One-Way ANOVA](./live/Week 9_ANOVA.Rmd), [depression data](./live/depression.txt), [rewards data](./live/rewards.txt), [bones.txt](./live/bones.txt)
+- Week 10 - [Two-Way ANOVA](./live/Week 10_2ANOVA.Rmd), [Sleep-Exercise data](./live/sleepdata.txt), [Voting data](./live/voting.txt), [Newspaper ads data](./live/ads.txt)
 
 ***Click [here](./formulas.md) for just the formula slides from Async lecture.***
 
@@ -28,7 +29,8 @@ Each assignment is worth 100 points. Assignments should be uploaded to the LMS (
   | [Assignment 1 pdf](./assignments/Assignment-1.pdf), [Assignment 1 Rmd file](./assignments/Assignment 1.Rmd), [Assignment 1 data file](./assignments/phd.txt) | Thursday 1/28 |
   | [Assignment 2](./assignments/Assignment-2.html), [Assignment 2 Rmd file](./assignments/Assignment 2.Rmd) | Thursday 2/11 |
   | [Assignment 3](./assignments/Assignment-3.html), [Assignment 3 Rmd file](./assignments/Assignment-3.Rmd), [Weights data file](./assignments/weights.txt) | Thursday 2/25 |
-  | [Assignment 4](./assignments/Assignment 4.Rmd), [Colors data file](./assignments/color.txt), [Sleep data file](./assignments/sleep.txt) | Thursday 3/11 |
+  | [Assignment 4 Rmd file](./assignments/Assignment 4.Rmd), [Colors data file](./assignments/color.txt), [Sleep data file](./assignments/sleep.txt) | Thursday 3/11 |
+  | [Assignment 5 Rmd file](./assignments/Assignment 5.Rmd), [Behavior data](./assignments/behavior.txt), [Difficulty data](./assignments/difficulty.txt) | Thursday 4/1 |
 
 ### Additional Useful Files
 * [Course Syllabus](./llo_8180_syllabus.pdf)
