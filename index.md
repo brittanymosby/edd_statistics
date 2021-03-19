@@ -13,7 +13,7 @@ These are the RStudio files and data files that we will use for our live session
 - Week 7 - [Two-sample t-Tests](./live/Week 7_Two Sample.Rmd)
 - Week 8
 - Week 9 - [One-Way ANOVA](./live/Week 9_ANOVA.Rmd), [depression data](./live/depression.txt), [rewards data](./live/rewards.txt), [bones.txt](./live/bones.txt)
-- Week 10 - [Two-Way ANOVA](./live/Week 10_2ANOVA.Rmd), [Sleep-Exercise data](./live/sleepdata.txt), [Voting data](./live/voting.txt), [Newspaper ads data](./live/ads.txt)
+- Week 10 - [Two-Way ANOVA](./live/Week 10_2ANONVA.Rmd), [Sleep-Exercise data](./live/sleepdata.txt), [Voting data](./live/election.txt), [Newspaper ads data](./live/ads.txt)
 
 ***Click [here](./formulas.md) for just the formula slides from Async lecture.***
 
