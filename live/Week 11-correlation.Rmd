@@ -1,0 +1,58 @@
+---
+title: "Week 11 Correlation"
+output: html_document
+---
+
+# Week 11 Live session R code
+
+This week we will learn how to compute and analyze correlations
+
+
+```{r}
+#If you know your working directory, use the line below. Otherwise, use the menu: Session > Set Working Directory > Choose Directory
+setwd("C:/Users/blmos/Dropbox/School Things/VU Peabody/LLO 8180 - Applied Statistics/R Code")
+```
+
+Let's look at the phd data from async. First, import the data:
+```{r}
+phd_data <- read.table("phd.txt", header=TRUE, sep="\t")
+
+head(phd_data)
+```
+Note the variable names and spelling (remember capitalization matters!)
+
+
+Now we will make a scatterplot:
+```{r}
+plot(phd_data$Time, phd_data$Pubs, main="Scatterplot of Time & Publications",
+     xlab="Time Since PhD Grad (in years)", ylab="Publications", pch=19)
+```
+
+We can use R to compute the Pearson Correlation and obtain other values for the hypothesis test
+```{r}
+cor.test(phd_data$Time, phd_data$Pubs, method=c("pearson"))
+```
+
+Now, let's look the example from asyc for the Spearman correlation
+
+```{r}
+english_data <- read.table("english.txt", header=TRUE, sep="\t")
+
+cor.test(english_data$Words, english_data$Grade, method=c("spearman"))
+```
+
+Point-Biserial Correlation (note that this code is the same as Pearson's, but the data setup differs)
+```{r}
+byod_data <- read.table("byod.txt", header=TRUE, sep="\t")
+
+cor.test(byod_data$Grade, byod_data$Byod) #pt-biserial
+```
+
+Phi Correlation (note that this code is the same as Pearson's, but the data setup differs)
+```{r}
+grad_data <- read.table("graduate.txt", header=TRUE, sep="\t")
+
+table(grad_data)
+
+cor.test(grad_data$Doctorate, grad_data$Business) #phi
+```
