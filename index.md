@@ -16,6 +16,8 @@ These are the RStudio files and data files that we will use for our live session
 - Week 10 - [Two-Way ANOVA Rmd file](./live/Week 10_2ANONVA.Rmd), [Sleep-Exercise data](./live/sleepdata.txt), [Voting data](./live/election.txt), [Newspaper ads data](./live/ads.txt)
 - Week 11 - [Correlation Rmd file](./live/Week 11-correlation.Rmd), [PhD data](./live/phd.txt), [BYOD data](./live/byod.txt), [English data](./live/english.txt), [Graduate data](./live/graduate.txt)
   - [PowerPoint slides from live session, 4/1](./ppt/week11-live.pptx)
+- Week 12 - [Simple Linear Regression](./live/Week 12-simple regression.Rmd)
+- Week 13 - [Multiple Linear Regression](./live/Week 12-multiple regression.Rmd)
 
 ***Click [here](./formulas.md) for just the formula slides from Async lecture.***
 
