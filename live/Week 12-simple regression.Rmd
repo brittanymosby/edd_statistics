@@ -1,0 +1,86 @@
+---
+title: "R Notebook"
+output: html_document
+---
+
+# Week 12 Live session R code
+This week we will learn how to conduct a SLR (simple linear regression) in R
+
+Let's look at the PhD data from async:
+```{r}
+#setwd("C:/Users/blmos/Dropbox/School Things/VU Peabody/LLO 8180 - Applied Statistics/R Code")
+phd <- read.table("phd.txt", header=TRUE, sep="\t")
+```
+
+Now we will make a scatterplot to examine the data visually
+```{r}
+plot(phd$Time, phd$Pubs, 
+     main="Scatterplot of Time & Pubs", 
+     xlab="Time Since Grad (in Years)", ylab="Publications")
+```
+Recall that we would only use linear regression for data that appears to have a linear relationship.
+
+
+Let's run an SLR with Pubs as DV and Time as IV; we will save it to an object called phd.regression, and then view the summary results.
+```{r}
+phd.regression <- lm(Pubs ~ Time, data=phd)
+
+summary(phd.regression)
+```
+
+This code will pull just the confidence interval for the coefficients
+```{r}
+#confidence intervals for parameter estimates
+confint(phd.regression)
+```
+
+```{r}
+#Plotting regression line on scatterplot
+plot(phd$Time, phd$Pubs, 
+     main="Scatterplot of Time & Pubs", 
+     xlab="Time Since Grad (in Years)", ylab="Publications")
+#add the regression line of best fit
+abline(phd.regression, col="blue")
+```
+How well are our predictions? We can examine the residual (error) plot to see:
+```{r}
+phd.res<-resid(phd.regression)
+
+plot(phd$Pubs, phd.res, main = "Residual Plot for Publications", xlab="Publications",ylab = "Error (Residual)")
+abline(0,0, col="purple")
+```
+
+An additional example (using data that is stored in R)
+I always look at the data first - dataset in R is called mtcars 
+
+```{r}
+summary(mtcars)
+```
+
+Let's examine a possible relationship between car weight & miles per gallon
+
+```{r}
+plot(mtcars$wt, mtcars$mpg, 
+     main="Scatterplot of Weight and MPG", 
+     xlab="Weight in 1000s", ylab="MPG")
+```
+
+Does car weight predict MPG? 
+
+```{r}
+cars.regression <- lm(mpg ~ wt, data=mtcars)
+summary(cars.regression)
+
+plot(mtcars$wt, mtcars$mpg, 
+     main="Scatterplot of Weight and MPG", 
+     xlab="Weight in 1000s", ylab="MPG")
+#add the regression line of best fit
+abline(cars.regression, col="red")
+```
+And here is the residual plot:
+```{r}
+cars.res<-resid(cars.regression)
+
+plot(mtcars$mpg, cars.res, main = "Residual Plot for MPG", xlab="MPG",ylab = "Error (Residual)")
+abline(0,0, col="purple")
+```
