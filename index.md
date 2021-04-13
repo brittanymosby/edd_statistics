@@ -18,6 +18,7 @@ These are the RStudio files and data files that we will use for our live session
   - [PowerPoint slides from live session, 4/1](./ppt/week11-live.pptx)
 - Week 12 - [Simple Linear Regression](./live/Week 12-simple regression.Rmd)
 - Week 13 - [Multiple Linear Regression](./live/Week 13-multiple regression.Rmd)
+- Week 14 - [Chi-Square/Goodness-of-Fit tests](./live/Week 14-chiquare.Rmd)
 
 ***Click [here](./formulas.md) for just the formula slides from Async lecture.***
 
