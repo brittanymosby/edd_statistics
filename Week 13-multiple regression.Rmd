@@ -1,0 +1,109 @@
+---
+title: "Week 13 R Code": Multiple Regression
+output: html_document
+---
+
+Week 13 Live session R code
+
+This week we will learn how to conduct a multiple linear regression (MLR), using R.
+
+Let's start by taking a look at the phd data from async
+```{r setup}
+setwd(...) #insert your path here, or use the dropdown menu to select the folder
+
+#These are special packages we'll use to run the standardized regression and obtain the partial correlation coefficients. You will only need to run this code chunk once per R session.
+install.packages("QuantPsyc")
+install.packages("ppcor")
+
+phd_mlr <- read.table("week13_phd2.txt", header=TRUE, sep="\t")
+```
+
+Recall in async we mean centered salary, let's do that first. (You may want to review the week 1 R code on how to add a variable to an existing dataset).
+```{r}
+#dataset$NEWVARNAME <- dataset$VAR_CENTER - mean(dataset$VAR_CENTER)
+phd_mlr$SALARY_mc <- phd_mlr$SALARY - mean(phd_mlr$SALARY)
+
+#Now, we will run the MLR with Time, Salary (centered) and citations as predictors for # of pubs
+phd.mlrreg <- lm(PUBS ~ TIME + SALARY_mc + CITS, data=phd_mlr)
+
+summary(phd.mlrreg)
+```
+
+Interpretation of the intercept: The predicted number of publications is 4.55 when time equals 0, citations equal 0, and the salary was at its mean ($54,815.76).
+
+Interpretation of the slope for citations: For each additional citation, there was a predicted increase in publications of .04, holding all other variables in the model constant.
+
+Final conclusion for the model: A MLR revealed that time, salary, and citations significantly predicted number of publications, F(3,58)=15.46, p<.05, R2=0.42.
+
+```{r}
+confint(phd.mlrreg)
+```
+
+If we want to obtain standardized regression coefficients, then we can use the QuantPsyc package:
+
+```{r}
+library(QuantPsyc)
+
+lm.beta(phd.mlrreg)
+```
+
+Let's write the standardized regression equation:
+$$\hat{z}_{pubs} = 0.54z_{time} + 0.15z_{salary_{mc}} + 0.05z_{cits}$$
+
+If we want to obtain the squared semi-partial and squared partial correlations, then we can use the ppcor package:
+```{r}
+library(ppcor)
+
+spcor(phd_mlr[,c("PUBS","SALARY_mc","TIME","CITS")])
+```
+To get the squared semi-partial correlations then we just square each value:
+$${sr}_{salary}^2 = (.1073541)^2 = .0115$$
+Interpretation: 1.15% of the variation in publications was accounted for by salary, beyond that which was accounted for by time & citations.
+
+$${sr}_{time}^2 = (.4286871)^2 = .1838$$
+Interpretation: 18.38% of the variation in publications was accounted for by time, beyond that which was accounted for by salary & citations.
+
+$${sr}_{cits}^2 = (.04087143)^2 = .0017$$
+Interpretation: 0.17% of the variation in publications was accounted for by citations, beyond that which was accounted for by time & salary.
+
+
+Likewise, we will use the ppcor package to get the partial correlations among the variables:
+```{r}
+pcor(phd_mlr[,c("PUBS","SALARY_mc","TIME","CITS")])
+```
+
+$${pr}_{salary}^2 = (.1425430)^2 =.0203$$
+Interpretation: of the variation in publications not explained by time and citations, 2.03% was explained by salary.
+
+$${pr}_{time}^2 = (.49852073)^2 = .2485$$
+Interpretation: of the variation in publications not explained by salary and citations, 24.85% was explained by time.
+
+$${pr}_{cits}^2 = (.05474607)^2 = .0030$$
+Interpretation: of the variation in publications not explained by salary and time, 0.30% was explained by citations. 
+
+And, in case you're interested here is the code to run the 3D scatterplot from async.
+```{r}
+#install.packages("plot3D") #you only need to run this line once
+require(plot3D)
+attach(phd_mlr)
+
+fit <- lm(PUBS ~ TIME+SALARY)
+
+TIME.pred <- seq(0, 20, length.out = 30)
+SALARY.pred <- seq(40000, 80000, length.out = 30)
+xy <- expand.grid(TIME = TIME.pred, 
+                  SALARY = SALARY.pred)
+PUBS.pred <- matrix (nrow = 30, ncol = 30, 
+                     data = predict(fit, newdata = data.frame(xy), interval = "prediction"))
+
+fitpoints <- predict(fit) 
+
+scatter3D(z = PUBS, x = TIME, y = SALARY, pch = 18, cex = 2, 
+          theta = 20, phi = 20, ticktype = "detailed",
+          xlab = "time", ylab = "salary", zlab = "pubs", clab = "pubs", 
+          surf = list(x = TIME.pred, y = SALARY.pred, z = PUBS.pred, 
+                      facets = NA, fit = fitpoints),
+          colkey = list(length = 0.8, width = 0.4),            
+          main = "phd")
+detach(phd_mlr)
+```
