@@ -3,12 +3,11 @@ title: "Assignment 1"
 author: ""
 date: "due 1/27/20"
 
-output: pdf_document
+output: html_document
 ---
 
 # Assignment 1
-This is due prior to the beginning of live session on the due date. Please submit as 
-a knit file (you can use html, pdf, or word - just upload one). Round all reported statistics to the nearest hundredths place (i.e., two decimal places). 
+This is due prior to the beginning of live session on the due date. Please submit as a knitted file, along with the .Rmd file by the due date. Round all reported statistics to the nearest hundredths place (i.e., two decimal places). 
 
 Please identify students with whom you worked on this assignment here (MAX of four to a group):
 
