@@ -5,7 +5,8 @@ This is a supplementary page for Professor Mosby's section of LLO 8180 - Applied
 ## Live Session RStudio (.Rmd) Files
 These are the RStudio files and data files that we will use for our live session meetings each week. While you don't have to run the code in advance of class, some of you might prefer to do so. I will upload all code at least 24 hours before our class meetings.
 - Week 1 - [Introduction Rmd File](./live/Week 1_Introduction to R.Rmd)
-- Week 2 - [Summary Statistics Rmd File](./live/Week 2_Summary Statistics.Rmd), [Data file](./live/week2data.txt)
+- Week 2 - [Summary Statistics Rmd File](./live/Week 2_Summary Statistics.Rmd), [Data file](./live/week2data.txt) 
+- Week 3 - [Normal Probability and Z-Scores](./live/Week 3 - Normal Prob and Z-Scores.Rmd)
 
 
 ## Assignments
@@ -15,7 +16,7 @@ Each assignment is worth 100 points. Assignments should be uploaded to the LMS (
 
 | File      | Due Date          |
 |:-------------|:------------------|
-|Assignment 1 | Coming Soon |
+| [Assignment 1 Rmd file](./assignments/Assignment 1.Rmd), [Assignment 1 data file](./assignments/phd.txt) | Thursday 5/27 |
   
 
 ## Additional Useful Files
