@@ -1,11 +1,8 @@
 ---
 title: "Week 3 - Basic Probability; Normal Distribution; Z-Scores"
-author: "Lacey Hartigan"
-date: "1/27/21"
-output:
-  html_document: default
-  pdf_document: default
-  word_document: default
+author: "BL Mosby"
+
+output: html_document: default
 ---
 
 ```{r  include=FALSE}
@@ -28,29 +25,31 @@ We can calculate z-scores "by hand" using R to compute the mean and standard dev
 mean(GPA)
 sd(GPA)
 ```
-We see that the mean is 3.16 and standard deviation is 0.594138. So we could calculate any z-score we wanted to for these data using these. 
-
+Once we have these values, we could calculate any z-score using the formula: $$z=\frac{x-\mu}{\sigma}$$ 
 For example, let's find the z-score for a GPA score of 3.2.
 ```{r}
 (3.2-3.16)/.594138
 ```
 
-Or we could program R to compute them all for us at once (this will calculate a z-score for every element in our vector). 
+Or we could use the R capabilities of working with datasets to compute them all for us at once (this will calculate a z-score for every element in our vector). 
 ```{r}
 (GPA-mean(GPA))/sd(GPA)
 ```
+Note, it is standard practice for many programmers to use the **Console** below, instead of creating code chunks, for simple calculations like these.
 
-## Method 2: Using R Functions
-We can use the scale function in R to compute the z-scores for us. 
+
+### Method 2: Using R Functions
+We can use the `scale` function to compute the z-scores for each value in the vector (dataset). 
 ```{r}
 scale(GPA, scale=TRUE, center=TRUE)
 ```
+Notice that `scale` also prints the mean (or center) and standard deviation (here, scale) as well as the z-scores, which are in the same order as the original vector.
+
 
 ## Normal Probabilities
+Now, let's learn how to compute normal probabilities in R **(this means we won't need to look things up manually on the standard normal table)**.
 
-Now, let's learn how to compute normal probabilities in R (this means we won't need to look things up manually on the standard normal table).
-
-To find normal probabilities in R we use the pnorm function. If you have the z-score computed then you can plug that into the pnorm function. R also needs to know whether you want the probability for the upper `(lower.tail=FALSE)` or lower `(lower.tail=TRUE)` tail.
+To find normal probabilities in R we use the `pnorm` function. The *arguments* for `pnorm()` are the z-score and the probability direction, i.e. or the upper `(lower.tail=FALSE)` or lower `(lower.tail=TRUE)` tail.
 
 Let's try the examples from async.
 
@@ -60,7 +59,7 @@ Find p(z > 1.5)
 pnorm(1.5, lower.tail=FALSE)
 ```
 *Q: How would we interpret this?*
-*A: There is a 6.68% probability of finding a score greater than z=1.5.*
+
 
 Find p(z < 1.5)
 ```{r}
@@ -68,12 +67,15 @@ pnorm(1.5, lower.tail=TRUE)
 ```
 *Interpretation: There is a 93.32% probability of finding a score less than z=1.5.*
 
+Remember, since the normal distribution is symmetric, it is always the case that the probabilities for the upper and lower tails of the same z-score will add up to 1 or 100%. Use the Console to verify this.
+
 Find p(Z < -1.5)
 ```{r}
 #Note this is for a lower tail so we will put lower.tail=TRUE
 pnorm(-1.5, lower.tail=TRUE)
 ```
-*Interpretation: there is a 6.68% probability of finding a score less than -1.5.*
+*Q: What is the relationship between this probability, and the first one we computed?*
+
 
 Find P(-1<z<1)
 ```{r}
@@ -92,32 +94,42 @@ pnorm(-1.96, lower.tail=TRUE) + pnorm(1.96, lower.tail=FALSE)
 2*pnorm(-1.96, lower.tail=TRUE)
 ```
 
-IQ test example
 
-IQ tests are normed to have a mean of 100 and standard deviation of 15. What is the probability an individual scores greater than 110?
+### IQ test example
+IQ tests are normed (or scaled) to have a mean of 100 and standard deviation of 15. What is the probability an individual scores greater than 110?
 
 Method 1 to answer this question:
 ```{r}
-#First let's compute the z-score - formula: z = (x-Mu)/sigma
-(110-100)/15
+#First let's compute the z-score - formula: z = (x-Mu)/sigma, using the Console below
+#Now plug that value into the pnorm function, making sure to supply the correct direction of the tail.
 
-#Now let's find the probability an individual scores greater than 110, p(z>.667)
-pnorm(0.6666667, lower.tail=FALSE)
-#The probability that an individual scores greater than 110 is 25.25%.
+pnorm(  , lower.tail= )
+
 ```
+
 
 Method 2 to answer this question:
 ```{r}
-#Alternatively, we could have just programmed this into one step by telling pnorm the mean and sd. But be very careful here. If you plug in the z-score then you do NOT need mean = __ and sd = __ because the default is mean = 0 and sd = 1.
+#Alternatively, we could provide two additional arguments to pnorm (the mean and standard deviation) to skip having to manual calculate the z-score. So now or pnorm arguments are the raw x value, mean, standard deviation, tail.
 
-#Only include mean = __ and sd = __ when you are plugging in the RAW score and NOT the z-score. Think of this as a shortcut because we do not have to compute the z-score first.
-pnorm(110, mean=100, sd=15, lower.tail=FALSE) 
+pnorm(110, mean=100, sd=15, lower.tail=FALSE)
 ```
-
-*Interpretation: There is a 25% probability of an individual scoring greater than 110.*
+Note that you would only include the additional arguments (mean and standard deviation) when you are plugging in the RAW (non-scaled) score and NOT the z-score. Think of this as a shortcut because we do not have to compute the z-score first.
 
 What is the probability an individual scores less than a 125?
 ```{r}
+#We will use the mean and sd arguments to complete this calculation in one step, rather than two:
 pnorm(125, mean=100, sd=15, lower.tail=TRUE)
+
+#Also: adding labels for the mean and standard deviation is optional. HOWEVER, make sure to always use the exact order of x value, mean, standard deviation, tail. You can also substitute T and F for TRUE and FALSE.
+pnorm(125, 100, 15, lower.tail = T)
+
 ```
-*Interpretation: The probability that an individual scores less than 125 is 95.22%.*
+
+What is the probability that an individual scores between 85 and 115?
+```{r}
+#Remember for compound inequalities such as this, we will use the symmetry of the normal distribution and simple arithmetic to find the probability.
+
+pnorm(115, 100, 15, lower.tail= T) - pnorm(85, 100, 15, lower.tail = T)
+```
+*Q: How is this calculation related to the empirical rule?*

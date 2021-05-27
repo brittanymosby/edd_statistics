@@ -1,9 +1,8 @@
 ---
 title: "Applied Statistics - Week 2: Descriptive/Summary Statistics"
 author: "BL Mosby"
-date: "1/21/21"
-output:
-  html_document
+
+output:  html_document
 ---
 
 # More FUN with R Code! Descriptive/Summary Statistics and other important code.

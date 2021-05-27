@@ -1,7 +1,6 @@
 ---
 title: "Applied Statistics - Week 1: Introduction to R"
 author: "BL Mosby"
-date: "5/13/21"
 
 output: html_document
 ---
@@ -86,10 +85,12 @@ Next, we will learn how to create vectors and dataframes and store those as obje
 To create a vector of elements, we use the code: c(element, element, element,...)
 ```{r}
 #Let's create a vector with the following numbers: 4 5 63 67 89
-vector1 <- c(4,5,63,67,89) 
+vector1 <- c(4,5,63,67,89) #concatenate 
 
 #Let's create another vector with the numbers: 88 92 71 69 99
 vector2 <- c(88, 92, 71, 69, 99)
+
+mean(vector2)
 
 #now let's create a vector with string (or non-numeric) data: dog, cat, bunny
 vectorstring <- c("dog", "cat", "bunny") #for non-numeric data, we use "" to show R that these aren't numbers
@@ -119,7 +120,7 @@ week1dataframe
 
 data.frame is a function -- we will be using a lot of functions. If you need help with a function you can just type help() with the name of the function in the ()
 ```{r}
-help(data.frame)
+#help(data.frame)
 ```
 
 Suppose we want to change the names of our vectors within in our dataframe so that
@@ -149,8 +150,10 @@ week1dataframe
 If we just want to view the values from one variable in a dataframe, you can use 
 call attention to just one variable (or column) with that same $ symbol.
 ```{r}
-#let's just look at the scores data
-week1dataframe$Score
+#let's just look at the sex data
+week1dataframe$Sex
+
+wk1df <- data.frame(week1dataframe$Sex, vector1, vector2)
 ```
 
 ## Frequency Distributions
@@ -164,10 +167,10 @@ mathability
 
 Then, we're going to use R's built in "table" function to create a frequency table.
 ```{r}
-table(mathability)
+mathtable <- table(mathability)
 
 #Let's make the table look a little better using transform - this is like the transpose function in excel
-transform(table(mathability))
+transform(mathtable)
 ```
 
 Now, let's add some information to the table (percent, cumulative frequency and cumulative percent)

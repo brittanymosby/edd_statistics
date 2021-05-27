@@ -373,7 +373,7 @@ summary {
 
 <h1 class="title toc-ignore">Applied Statistics - Week 1: Introduction to R</h1>
 <h4 class="author">BL Mosby</h4>
-<h4 class="date">1/13/21</h4>
+<h4 class="date">5/13/21</h4>
 
 </div>
 
@@ -436,12 +436,14 @@ ollietheobject &lt;- 52</code></pre>
 <p>Next, we will learn how to create vectors and dataframes and store those as objects in R.</p>
 <p>To create a vector of elements, we use the code: c(element, element, element,…)</p>
 <pre class="r"><code>#Let&#39;s create a vector with the following numbers: 4 5 63 67 89
-vector1 &lt;- c(4,5,63,67,89) 
+vector1 &lt;- c(4,5,63,67,89) #concatenate 
 
 #Let&#39;s create another vector with the numbers: 88 92 71 69 99
 vector2 &lt;- c(88, 92, 71, 69, 99)
 
-#now let&#39;s create a vector with string (or non-numeric) data: dog, cat, bunny
+mean(vector2)</code></pre>
+<pre><code>## [1] 83.8</code></pre>
+<pre class="r"><code>#now let&#39;s create a vector with string (or non-numeric) data: dog, cat, bunny
 vectorstring &lt;- c(&quot;dog&quot;, &quot;cat&quot;, &quot;bunny&quot;) #for non-numeric data, we use &quot;&quot; to show R that these aren&#39;t numbers</code></pre>
 <p>To view (or “print”) an object, you can simply enter the name of the object, and R will reveal what is assigned to the object.</p>
 <pre class="r"><code>#print the ollietheobject object
@@ -467,8 +469,7 @@ week1dataframe</code></pre>
 ## 4      67      69
 ## 5      89      99</code></pre>
 <p>data.frame is a function – we will be using a lot of functions. If you need help with a function you can just type help() with the name of the function in the ()</p>
-<pre class="r"><code>help(data.frame)</code></pre>
-<pre><code>## starting httpd help server ... done</code></pre>
+<pre class="r"><code>#help(data.frame)</code></pre>
 <p>Suppose we want to change the names of our vectors within in our dataframe so that they are meaningful and tell us something about the data. For the vectors we have, let’s say that vector 1 is the student ID and vector 2 is the student’s last grade on an exam.</p>
 <pre class="r"><code>names(week1dataframe) &lt;- c(&quot;SID&quot;, &quot;Score&quot;)
 
@@ -501,9 +502,10 @@ week1dataframe</code></pre>
 ## 4  67    69   M  27
 ## 5  89    99   F  35</code></pre>
 <p>If we just want to view the values from one variable in a dataframe, you can use call attention to just one variable (or column) with that same $ symbol.</p>
-<pre class="r"><code>#let&#39;s just look at the scores data
-week1dataframe$Score</code></pre>
-<pre><code>## [1] 88 92 71 69 99</code></pre>
+<pre class="r"><code>#let&#39;s just look at the sex data
+week1dataframe$Sex</code></pre>
+<pre><code>## [1] &quot;M&quot; &quot;F&quot; &quot;F&quot; &quot;M&quot; &quot;F&quot;</code></pre>
+<pre class="r"><code>wk1df &lt;- data.frame(week1dataframe$Sex, vector1, vector2)</code></pre>
 </div>
 <div id="frequency-distributions" class="section level2">
 <h2>Frequency Distributions</h2>
@@ -512,12 +514,10 @@ week1dataframe$Score</code></pre>
 mathability</code></pre>
 <pre><code>##  [1] 6 5 6 1 4 4 5 6 5 3 5 6 7 3 5 5 4 5 4 7 2 5 5 2 6 5 5 4 5 3 5 7 6 5 3</code></pre>
 <p>Then, we’re going to use R’s built in “table” function to create a frequency table.</p>
-<pre class="r"><code>table(mathability)</code></pre>
-<pre><code>## mathability
-##  1  2  3  4  5  6  7 
-##  1  2  4  5 14  6  3</code></pre>
-<pre class="r"><code>#Let&#39;s make the table look a little better using transform - this is like the transpose function in excel
-transform(table(mathability))</code></pre>
+<pre class="r"><code>mathtable &lt;- table(mathability)
+
+#Let&#39;s make the table look a little better using transform - this is like the transpose function in excel
+transform(mathtable)</code></pre>
 <pre><code>##   mathability Freq
 ## 1           1    1
 ## 2           2    2
