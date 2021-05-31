@@ -2,7 +2,8 @@
 title: "Week 3 - Basic Probability; Normal Distribution; Z-Scores"
 author: "BL Mosby"
 
-output: html_document: default
+output: 
+  html_document: default
 ---
 
 ```{r  include=FALSE}
@@ -25,6 +26,7 @@ We can calculate z-scores "by hand" using R to compute the mean and standard dev
 mean(GPA)
 sd(GPA)
 ```
+
 Once we have these values, we could calculate any z-score using the formula: $$z=\frac{x-\mu}{\sigma}$$ 
 For example, let's find the z-score for a GPA score of 3.2.
 ```{r}
@@ -41,7 +43,8 @@ Note, it is standard practice for many programmers to use the **Console** below,
 ### Method 2: Using R Functions
 We can use the `scale` function to compute the z-scores for each value in the vector (dataset). 
 ```{r}
-scale(GPA, scale=TRUE, center=TRUE)
+scale(GPA, T, T)
+
 ```
 Notice that `scale` also prints the mean (or center) and standard deviation (here, scale) as well as the z-scores, which are in the same order as the original vector.
 
@@ -58,7 +61,9 @@ Find p(z > 1.5)
 #Note this is for an upper tail so we will put lower.tail=FALSE
 pnorm(1.5, lower.tail=FALSE)
 ```
-*Q: How would we interpret this?*
+*Q: How would we interpret this?* 6.68% of z-scores are above 1.5
+6.68% of this population has a z-score over 1.5
+the probability of a z-score greater than 1.5 in this population is 6.68%
 
 
 Find p(z < 1.5)
@@ -96,14 +101,14 @@ pnorm(-1.96, lower.tail=TRUE) + pnorm(1.96, lower.tail=FALSE)
 
 
 ### IQ test example
-IQ tests are normed (or scaled) to have a mean of 100 and standard deviation of 15. What is the probability an individual scores greater than 110?
+IQ tests are normed (or scaled) to have a mean of 100 and standard deviation of 15. What is the probability an individual scores greater than 110? (or above 110 or more than 110 or over 110)
 
 Method 1 to answer this question:
 ```{r}
 #First let's compute the z-score - formula: z = (x-Mu)/sigma, using the Console below
 #Now plug that value into the pnorm function, making sure to supply the correct direction of the tail.
 
-pnorm(  , lower.tail= )
+pnorm(0.6666666667,lower.tail=FALSE)
 
 ```
 
@@ -116,7 +121,7 @@ pnorm(110, mean=100, sd=15, lower.tail=FALSE)
 ```
 Note that you would only include the additional arguments (mean and standard deviation) when you are plugging in the RAW (non-scaled) score and NOT the z-score. Think of this as a shortcut because we do not have to compute the z-score first.
 
-What is the probability an individual scores less than a 125?
+What is the probability an individual scores less than a 125? (or below or under or beneath)
 ```{r}
 #We will use the mean and sd arguments to complete this calculation in one step, rather than two:
 pnorm(125, mean=100, sd=15, lower.tail=TRUE)
