@@ -18,7 +18,7 @@ Each assignment is worth 100 points. Assignments should be uploaded to the LMS (
 | File      | Due Date          |
 |:-------------|:------------------|
 | [Assignment 1 Rmd file](./assignments/Assignment 1.Rmd), [Assignment 1 data file](./assignments/phd.txt) | Thursday 5/27 |
-| [Assignment 2](./assignments/Assignment-2.html), [Assignment 2 Rmd file](./assignments/Assignment 2.Rmd) | Thursday 6/10 |
+| [Assignment 2 Rmd file](./assignments/Assignment 2.Rmd). [Assignment 2 HTML file](./assignments/Assignment-2.html) | Thursday 6/10 |
   
 
 ## Additional Useful Files
