@@ -34,43 +34,44 @@ H_1: \mu_{satprep} \neq \mu_0 \\
 \]
 There will be a difference in the means between students who took the SAT prep course and the general population of test takers.
 
-### METHOD 1: Critical Value
+**METHOD 1: Critical Value**
 Use the critical value method to determine whether the difference between students who took the SAT prep course and the general population is statistically significant.
 
-1a. Calculate the test statistic (Z)
+1a. Calculate the test statistic (Z) and the critical value (CV) for $\alpha=.05$
 ```{r}
-#We could also do this using the Console, rather than creating a code chunk.
+#The test statistic is the z-score for the sample mean, under the Central Limit Theorem:
 (1350-1400)/(145/sqrt(28))
+#We could also do this using the Console, rather than creating a code chunk.
+
+#To find the critical value from the Normal distribution, we will use `qnorm` (and divide by two, since this is a two tailed test.)
+qnorm(0.05/2)
 ```
-1b. Compare the test statistic to the critical value (CV) for alpha=.05, 2-tailed test (1.96). Is our test statistic MORE extreme than +/- 1.96? 
+1b. Compare the test statistic to the critical value (CV) to determine if our test statistic MORE extreme than CV.
 
 *A: No. -1.82 is LESS extreme than the CV of -1.96. So, we fail to reject the null. We did NOT find a statistically significant difference.*
----
 
-### METHOD 2: P-Value
-Let's now use the p-value method to determine whether the difference between students who took the SAT prep course and the general population is statistically significant.
+**METHOD 2: P-Value**
+Let's now use the p-value method to determine whether the difference between students who took the SAT prep course and the general population is statistically significant. (Recall that the p-value is the probability of obtaining a test statistic that is *more extreme* than the observed value, assuming the null hypothesis is true.)
 
-(Recall that the p-value is the probability of obtaining a test statistic that is *more extreme* than the observed value, assuming the null hypothesis is true.)
-
-2a. Calculate the p-value using `pnorm`. Make sure you use the correct `lower.tail` argument (lower.tail=T for negative test statistics; lower.tail=F for positive test statistics)
+2a. Calculate the p-value using `pnorm`. Make sure you use the correct `lower.tail` argument (lower.tail=T for negative test statistics; lower.tail=F for positive test statistics).
 ```{r}
 #Since this is a two-tailed test, we will multiply the area beyond the test statistic by 2.
-#We still need the test statistic here-- and instead of computing using the Console, we can also enter the sample data directly into the `pnorm` function:
+#We still need the test statistic here-- and instead of computing separately, we can also enter the sample data directly into the `pnorm` function:
 
 2*pnorm(1350, mean=1400, sd=145/sqrt(28), lower.tail=T)
 ```
 
-2b. Compare the p-value to our alpha (which we will assume to be .05, unless otherwise stated). Is p LESS than alpha? 
+2b. Compare the p-value to alpha (which we will assume to be .05, unless otherwise stated). Is p LESS than alpha? 
 
 *A: No. p is > .05. So, we fail to reject the null. We did NOT find a statistically significant difference.* Note: Does this answer agree with your answer from using the CV method? (IT BETTER!)
 
----
-More examples:
+
+**More examples:**
 
 The Bureau of Labor Statistics reported that in May 2009, the mean annual earnings of all family practitioners in the United States was 168,550, with a standard deviation of 42,750. A random sample of 55 family practitioners in Missouri that month had mean earnings of 154,590. Do the data provide sufficient evidence to conclude that the mean salary for family practitioners in Missouri is different from the national average?
----
+
 
 Tests of older baseballs showed that when dropped 24 feet onto a concrete surface, they bounced an average of 235.8 cm and the standard deviation of bounce heights is 4.5 cm. In a test of 40 new baseballs, the bounce heights had a mean of 235.4 cm. According to the professional baseball association, there is no difference between older and newer baseballs.  What do bounce heights suggest?
----
+
 
 A new drug is being developed that is believed to reduce recovery time from a particular infectious disease. Based on evidence from existing cases, it takes patients an average of 4.1 days, and standard deviation 2.2 days, to recover without the drug. In a clinical trial of 100 people, researchers have found that the average amount of time to recover from the disease is 3.4 days. Does the drug appear to be effective at reducing recovery time?
