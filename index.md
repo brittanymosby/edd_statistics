@@ -7,6 +7,7 @@ These are the RStudio files and data files that we will use for our live session
 - Week 1 - [Introduction Rmd File](./live/Week 1_Introduction to R.Rmd)
 - Week 2 - [Summary Statistics Rmd File](./live/Week 2_Summary Statistics.Rmd), [Data file](./live/week2data.txt) 
 - Week 3 - [Normal Probability and Z-Scores](./live/Week 3 - Normal Prob and Z-Scores.Rmd)
+- Week 4 - [Sampling Strategy](./live/Week 4 - Sampling Distributions.Rmd)
 
 
 ## Assignments
@@ -17,6 +18,7 @@ Each assignment is worth 100 points. Assignments should be uploaded to the LMS (
 | File      | Due Date          |
 |:-------------|:------------------|
 | [Assignment 1 Rmd file](./assignments/Assignment 1.Rmd), [Assignment 1 data file](./assignments/phd.txt) | Thursday 5/27 |
+| [Assignment 2 Rmd file](./assignments/Assignment 2.Rmd), [Assignment 2 HTML file](./assignments/Assignment-2.html) | Thursday 6/10 |
   
 
 ## Additional Useful Files
