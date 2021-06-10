@@ -1,0 +1,78 @@
+---
+title: "Week 4 - Normal Probabilities in Sampling Distributions"
+author: "BL Mosby"
+date: "6/3/21"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+```{r  include=FALSE}
+#This is our setup code chunk, where we would load any needed libraries, set document parameters, etc.
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+This week we will learn how to compute probabilities of the sample mean, using the sampling distribution. 
+
+Let's first use the R console as a calculator to compute total possible samples for theoretical sampling and then for experimental sampling.
+
+How many samples of four participants (n = 4) from a population of ten people (N = 10) would we have using THEORETICAL sampling?
+
+How many samples of four participants (n = 4) from a population of ten people (N = 10) would we have using EXPERIMENTAL sampling? (Use `n! = factorial(n)` for this formula) $$\frac{N!}{n!(N-n)!}$$
+
+---
+### Sampling Distribution of the Mean
+
+Returning to the IQ score example: IQ tests are scored to have a population mean of 100 and standard deviation 15, and approximately normally distributed. Last week, we found the probability that an individual scores greater than 120 using two equivalent methods:
+```{r}
+#Method 1 - using the z-score in pnorm
+(120-100)/15 #this finds the z-score
+pnorm(1.3333333, lower.tail=FALSE)
+
+#Method 2 - using the raw score in pnorm
+pnorm(120, mean=100, sd=15, lower.tail=FALSE)
+```
+
+This week, we're going to work with the sampling distribution of the **mean**. In other words, instead of considering the probability value for an individual, we want to find the probability that the mean of a sample group is above or below a given value. 
+
+**Central Limit Theorem** - the distribution of the sample mean is approximately normal, given the population is normally distributed OR the sample size is sufficiently large (i.e. > 30). Additionally,
+$$\mu_M = \mu \text{ and} \\  \sigma_M \text{ or } SEM = \frac{s}{\sqrt{n}}$$
+This enables us to compute the probability for the mean of a sample of individuals from a given population. For example, what is the probability that a sample of 9 individuals has a mean IQ greater than 110 on an IQ test?
+ - First, we need to compute the standard error (se), as this will replace the standard deviation in our sampling distribution calculations. (Use the console to find se.)
+ - Next, using either Method 1 or Method 2 above, find the probability using the CLT.
+
+```{r}
+#the code for the probability calculation:
+pnorm(110, mean=100, sd=5, lower.tail = FALSE)
+```
+There is a 2.28% chance of selecting a random group of 9 people with an average IQ above 110.
+
+Now try the following questions out with different population values:
+
+IQ tests are normed to have a mean of 140 and standard deviation of 12. What is the probability that a sample of 5 individuals has a mean less than 130 on an IQ test?
+
+```{r}
+#Type the code for the probability calculation here:
+pnorm(130, mean=140, sd=12/sqrt(5), lower.tail = TRUE)
+```
+There is a 3.12% chance of selecting a random group of 5 people from this population with mean IQ below 130.
+
+What's the probability that a sample of 10 has a mean greater than 150 on the same IQ test?
+```{r}
+#Type the code for the probability calculation here:
+pnorm(150, mean=140, sd=12/sqrt(10), lower.tail = FALSE)
+```
+There is a 0.42% chance of selecting a random group of 10 people from this population with mean IQ above 150.
+---
+Now suppose we have state standardized math test, with mean of 170 and an sd of 15. 
+
+What is the probability that a sample of 7 students has a mean greater than 175?
+```{r}
+#Type the code for the probability calculation here:
+pnorm(175, mean=170, sd=15/sqrt(7), lower.tail = FALSE)
+```
+(What did we need to assume to complete this calculation?)
+To use the CLT, we assumed the math test scores have a normal distribution, since the sample size is less than 30.
+
