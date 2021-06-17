@@ -1,0 +1,114 @@
+
+---
+title: "Week 5 - Test Statistics & P-values"
+author: "BL Mosby"
+date: "6/10/21"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+```{r  include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This week we will not do much with R other than calculate test statistics and compute p-values.
+
+Given a one sample z-test, two-tailed, alpha level .05. 
+
+Let's say we have a population mean SAT score of 1400 and standard dev of 80. Our sample mean is 1350 for a sample of students who took an SAT prep course. Does our sample of 28 students statistically significantly differ from the population?
+
+First, let's write out our Null and Alternative hypotheses (in words AND in symbols):
+
+\[
+\begin{eqnarray}
+H_0: \mu_{satprep} = \mu_0 \\
+\end{eqnarray}
+\]
+There will be no difference in the means between students who took the SAT prep course and the general population of test takers.
+\[
+\begin{eqnarray}
+H_1: \mu_{satprep} \neq \mu_0 \\ 
+\end{eqnarray}
+\]
+There will be a difference in the means between students who took the SAT prep course and the general population of test takers.
+
+**METHOD 1: Critical Value**
+Use the critical value method to determine whether the difference between students who took the SAT prep course and the general population is statistically significant.
+
+1a. Calculate the test statistic (Z) and the critical value (CV) for $\alpha=.05$
+```{r}
+#The test statistic is the z-score for the sample mean, under the Central Limit Theorem:
+(1350-1400)/(80/sqrt(28))
+#We could also do this using the Console, rather than creating a code chunk.
+
+#To find the critical value from the Normal distribution, we will use `qnorm` (and divide by two, since this is a two tailed test.)
+qnorm(0.05/2)
+```
+1b. Compare the test statistic to the critical value (CV) to determine if our test statistic MORE extreme than CV.
+
+*A: YES, the test statistic (-3.31) is MORE extreme than the critical value (+/-1.96). So we would REJECT THE NULL HYPOTHESIS. The mean scores for the prep course takers appears to differ from the mean population score.*
+
+**METHOD 2: P-Value**
+Let's now use the p-value method to determine whether the difference between students who took the SAT prep course and the general population is statistically significant. (Recall that the p-value is the probability of obtaining a test statistic that is *more extreme* than the observed value, assuming the null hypothesis is true.)
+
+2a. Calculate the p-value using `pnorm`. Make sure you use the correct `lower.tail` argument (lower.tail=T for negative test statistics; lower.tail=F for positive test statistics).
+```{r}
+#Since this is a two-tailed test, we will multiply the area beyond the test statistic by 2.
+#We still need the test statistic here-- and instead of computing separately, we can also enter the sample data directly into the `pnorm` function:
+
+2*pnorm(1350, mean=1400, sd=80/sqrt(28), lower.tail=T)
+```
+
+2b. Compare the p-value to alpha (which we will assume to be .05, unless otherwise stated). Is p LESS than alpha? 
+
+*A: YES. p is < .05. So, we reject the null. We DID find a statistically significant difference.* Note: Does this answer agree with your answer from using the CV method? (IT BETTER!)
+
+
+**More examples:**
+
+The Bureau of Labor Statistics reported that in May 2009, the mean annual earnings of all family practitioners in the United States was 168,550, with a standard deviation of 42,750. A random sample of 55 family practitioners in Missouri that month had mean earnings of 154,590. Do the data provide sufficient evidence to conclude that the mean salary for family practitioners in Missouri is different from the national average?
+
+H0: M = 168,550
+The mean salary of Missouri family practitioners is equal to the US mean.
+H1: M != 168,550
+The mean salary of Missouri family practitioners is NOT equal to the US mean.
+
+```{r}
+#I used the console to find the test stat: (154,950-168,550)/(42,750/sqrt(55))
+2*pnorm(-2.422, lower.tail = TRUE)
+#Note we are still multiplying by 2 since this is a two-tailed test.
+```
+Since p-value < alpha, we REJECT THE NULL HYPOTHESIS. The mean salary of Missouri family practitioners is statistically significantly different from the US average.
+
+Tests of older baseballs showed that when dropped 24 feet onto a concrete surface, they bounced an average of 235.8 cm and the standard deviation of bounce heights is 4.5 cm. In a test of 40 new baseballs, the bounce heights had a mean of 235.4 cm. According to the professional baseball association, there is no difference between older and newer baseballs.  What do bounce heights suggest?
+
+H0: M = 235.8
+The mean bounce heights of new baseballs is the same as the mean of older baseballs.
+H1: M != 235.8
+The mean bounce heights of new baseballs is not the same as the mean of older baseballs.
+
+```{r}
+#This time I will plug the parameters and statistics directly into pnorm:
+2*pnorm(235.4, mean=235.8, sd=4.5/sqrt(40), lower.tail = TRUE)
+#How did I know I would need the lower tail for this calculation?
+```
+Here, p-value > alpha so we FAIL TO REJECT THE NULL HYPOTHESIS. There is insufficient evidence to support the claim that the bounce heights of newer and older baseballs are NOT equal. (Remember, despite the double-negative, this is not the same as stating the bounce heights of newer and older baseballs are equal. We can only state statistically that this sample data does not disprove the alternative hypothesis.)
+
+
+A new drug is being developed that is believed to reduce recovery time from a particular infectious disease. Based on evidence from existing cases, it takes patients an average of 4.1 days, and standard deviation 2.2 days, to recover without the drug. In a clinical trial of 100 people, researchers have found that the average amount of time to recover from the disease is 3.4 days. Does the drug appear to be effective at reducing recovery time?
+
+H0: M = 4.1
+The mean number of days to recover with the drug is equal to recovery time without the drug.
+H1: M != 4.1
+The mean number of days to recover with the drug is not equal to recovery time without the drug.
+
+```{r}
+#If you do decide to use the console to compute the test stat first, make sure you round to at least 3 decimal places when plugging into pnorm.
+2*pnorm(3.4, mean=4.1, sd=2.2/sqrt(100), lower.tail = T)
+```
+In general, the lower the p-value, the stronger the evidence against the null hypothesis. Since p-value < alpha, we REJECT THE NULL HYPOTHESIS. Patients in the clinical trial who have taken the drug do not have the same recovery time as patients without the drug.
+
+
+
