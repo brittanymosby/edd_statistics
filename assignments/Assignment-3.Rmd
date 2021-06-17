@@ -5,7 +5,7 @@
 ---
 title: "Applied Statistics - Assignment 3"
 author: "YOUR NAME HERE"
-date: "due 2/25/21"
+date: "due 6/24/21"
 output: 
   html_document: default
 ---
