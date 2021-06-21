@@ -10,6 +10,7 @@ These are the RStudio files and data files that we will use for our live session
 - Week 4 - [Sampling Strategy](./live/Week 4 - Sampling Distributions.Rmd)
 - Week 5 - [Hypothesis Testing: One Sample z-tests](./live/Week 5 - Testing.Rmd), [HTML version](./live/Week-5---Testing.html)
 - Week 6 - [One Sample t-tests and Effect Sizes](./live/Week 6_Effect Size.Rmd), [HTML version](./live/Week-6_Effect-Size.html)
+- Week 7 - [Two Sample t-tests](./live/Week 7_Two Sample.Rmd)
 
 
 ## Assignments
