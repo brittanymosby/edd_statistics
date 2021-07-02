@@ -1,7 +1,7 @@
 ---
 title: "LLO 8180 Week 7 Live Session"
 author: "BL Mosby"
-date: "2/25/2021"
+date: "6/24/2021"
 output: html_document
 ---
 
@@ -9,26 +9,32 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This week we learn how to conduct two-sample t-tests in R
+This week we learn how to conduct two-sample t-tests in R.
 
-We will start with independent samples t-test
+We will start with independent samples t-test.
 
-Let's look at sample data given for example 9.2 (p. 297) in the book
-The data: the number of calories consumed in a meal between groups asked to eat slowly or fast
+Let's look at sample data given for example 9.2 (p. 297) in the book: the number of calories consumed in a meal between groups asked to eat slowly or fast
 
 ```{r}
-#Store the following two vectors as a data frame named _calories_
+#Store the following two vectors (Slow and Fast) as a data frame named "calories"
 calories <- data.frame(Slow=c(700,450,850,600,450,550), Fast=c(450,800,750,700,550,650))
 
-#This will run a t-test (which one?) comparing the means of the Slow and Fast variables. Note how we include the assumption the two groups have equal variance.
-t.test(calories$Fast, calories$Slow, var.equal=T)
+View(calories)
+#This will make the data frame open in a new window once you run the code chunk.
 ```
+It is usually a good idea to quickly inspect your data frame after creating/uploading to make sure it is correctly labeled.
 
-What about  using the formulas learned in async?
-The next code chuck calculates the t-statistic "by hand" (I have created the formula for you, all you need to do is type in the values)
+Recall from Week 6 the function `t.test` can be used to quickly run a Student-t distribution hypothesis test on a given set of data. To compare two (independent) samples, we will list both data vectors within the function.
 
 ```{r}
-#First I will get the mean and sd for each group
+#This will run an independent samples t-test comparing the means of the Slow and Fast variables. Note how we include the assumption the two groups have equal variance.
+t.test(calories$Slow, calories$Fast, var.equal=TRUE)
+```
+
+If you **really** wanted to compute using the formulas:
+
+```{r}
+#First obtain the test statistic: get the mean and sd for each group
 M1<-mean(calories$Slow)
 M2<-mean(calories$Fast)
 s1<-sd(calories$Slow)
@@ -36,12 +42,13 @@ s2<-sd(calories$Fast)
 
 n1<-6; n2<-6
 ```
-
-
-Next I will plug them into the objects and run the code to obtain the t-value using the formula from async:
+Next use the objects to obtain the t-value using the formula from async:
 
 ```{r}
-t <- (M1-M2)/sqrt((((n1-1)*s1^2+(n2-1)*s2^2)/(n1+n2-2))*((1/n1)+(1/n2)))
+t <- (M1-M2)/sqrt(
+  (
+    (
+      (n1-1)*s1^2+(n2-1)*s2^2)/(n1+n2-2))*((1/n1)+(1/n2)))
 t
 ```
 
@@ -49,55 +56,61 @@ Calculating the p-value:
 We still have to double the probability for two-tailed tests, and we still need to be careful with the lower.tail command.
 
 ```{r}
+#Remember pt gives the probability from the t-distribution
 2*pt(t, df=10, lower.tail=TRUE)
-
-#Calculating effect size -- note, we're doing it here for demonstration, but given our results above, we would NOT calculate effect size.
-
-#Calculate Cohen's d
-(M1-M2)/sqrt((((n1-1)*s1^2+(n2-1)*s2^2)/(n1+n2-2)))
-
-#Calculate eta squared
-(t^2)/(t^2+(n1 + n2 - 2))
 ```
+This should match our output from `t.test`, and show why the formulas work. :)
 
-Conclusion: An independent-samples t-test revealed no statistically significant difference between the number of calories consumed between the fast eaters (M=650, s=130.38) and the slow eaters (M=600, s=154.92); t(10)=0.60, p>0.05.
 
------------------------------------------------------------------
-Now, lets run code for RELATED samples t-test
+APA conclusion: An independent-samples t-test revealed no statistically significant difference between the number of calories consumed between the fast eaters (M=650, s=130.38) and the slow eaters (M=600, s=154.92); t(10)=-0.60, p>0.05.
+
+
+Now, lets run code for RELATED samples t-test-- that is where the two comparison groups are related or dependent on each other.
+
+Suppose have a set of pre- and post-test scores for a group of students. To compare the means before and after, we would use a RELATED samples t-test.
 
 ```{r}
+#Create the data frame
 grades <- data.frame(Pretest=c(68,74,55,81,72,59,78,65,80), 
                    Posttest=c(78,79,68,92,72,65,74,71,90))
 
-t.test(grades$Posttest, grades$Pretest, var.equal=FALSE, paired=TRUE)
+#Notice here we will remove the assumption of equal variances, and indicate the samples are paired (i.e., listed in order in both vectors)
+t.test(grades$Posttest, grades$Pretest, paired=TRUE)
 ```
 
-Now, to run this "by hand," first create a vector of the difference scores (i.e., Posttest - Pretest) 
+A slightly different way to compare- instead of a related two-sample test, we can do a one sample t-test on the *difference* in the grades for each student:
 ```{r}
+#Create a new vector variable called grades
 grades$difference <- c(grades$Posttest-grades$Pretest)
 
-#Look at the data and see the difference scores
+#Don't forget to inspect the data
 grades
-
-#Now I will find the mean and sd of the difference scores and use them to compute t using the formula from async
-dBar<-mean(grades$difference)
-dsd<-sd(grades$difference)
 ```
-
 
 ```{r}
+t.test(grades$difference, mu=0)
+```
+Notice the output values for the test statistic, df, and p-value are all the same as in the two-sample test above.
+
+```{r}
+#Or finding the test statistic and p-value, using the formulas:
+dBar<-mean(grades$difference)
+dsd<-sd(grades$difference)
+
 dt <- dBar/(dsd/sqrt(9))
 
-#now, let's find the p-value
+#Find the p-value
 2*pt(dt, df=8, lower.tail=FALSE)
 ```
+Again, we end up with the same p-value as above.
 
-Let's calculate cohen's d, since we found statistical significance; and find the means for an APA write-up/conclusion.
+Now, since this indicates a statistically significant difference between the pre- and post-tests, we can calculate the effect size (cohen's d), and find the means for an APA write-up/conclusion.
 
 ```{r}
 #Cohen's d = Dbar/SDdiff
 dBar/dsd
 ```
+Effect size greater than .8 indicates a large effect.
 
 ```{r}
 #find means for APA write-up/conclusion
@@ -107,4 +120,4 @@ mean(grades$Posttest)
 sd(grades$Posttest)
 ```
 
-Conclusion: A related-samples t-test revealed a statistically significant difference between the pre-test (M=70.22, SD=9.22) and post-test (M=76.56, SD=9.30); t(8)=3.45, p<0.05, d=1.15. Cohen's d revealed a large effect.
+APA conclusion: A related-samples t-test revealed a statistically significant difference between the pre-test (M=70.22, SD=9.22) and post-test (M=76.56, SD=9.30); t(8)=3.45, p<0.05, d=1.15. Cohen's d revealed a large effect.

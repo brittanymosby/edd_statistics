@@ -1,0 +1,149 @@
+---
+title: "Week 6 - Power and Effect Size; One Sample t-Test"
+author: "BL Mosby"
+date: "6/17/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This week we learn how to conduct a one-sample t-test in R. Let's use R to perform calculations for the "couples" example.
+
+**Research Q: Are the American couples significantly different from European couples (our reference population)?**
+
+Writing the hypotheses in words and symbols:
+
+American couples spend the same amount of time discussing marital problems as European couples.
+H0: M_am = M_euro
+
+$$H_0: \mu_{am} = \mu_{euro}$$
+American couples spend a different amount of time discussing marital problems as compared to European couples.
+H1: M_am != M_euro
+
+$$H_1: \mu_{am} \neq \mu_{euro}$$
+
+To calculate the t-statistic, recall the formula: $$t=\frac{(M - \mu_0)}{(s\div\sqrt{n})}$$
+
+```{r}
+#This week, instead of using the Console, let's save the value for the test statistic as an object, that we can refer to later.
+ttstat<-(2.6-3)/(1.9/sqrt(70))
+#This will display the value of the object as output.
+ttstat
+```
+
+Next, find the critical value using R using the function: `qt(alpha/#tails, df))`
+
+```{r}
+#The critical value calculation for the Student-t distribution is similar to the normal distribution. We will divide the alpha by 2 (since there are 2 tails), and also provide the degrees of freedom from the sample.
+ttcrit<-qt(.05/2, 69)
+ttcrit
+```
+Comparing the test statistic and critical value, we would make the decision to FAIL TO REJECT THE NULL HYPOTHESIS. There is insufficient evidence to support the claim that American couples do not spend the same amount of time discussing marital problems as European couples.
+
+Additionally, we could use RStudio to calculate the p-value. With a t-test, instead of `pnorm`, we will use `pt` for the Student-T distribution, with a given df from the sample. We still have to multiply the probability for two-tailed tests, and we still need to be careful with the `lower.tail` argument.
+
+```{r}
+#Storing the p-value as an object.
+tpval<-2 * pt(ttstat, df=69, lower.tail=TRUE)
+tpval
+```
+
+Based on this p-value, our decision would again be to FAIL TO REJECT THE NULL HYPOTHESIS.
+Here is the conclusion, using acceptable APA formatting:
+
+*A one-sample t-test revealed that there was not evidence of a statistically significant difference between American couples (M=2.6) and European couples (M=3) on time spent discussing marital problems; t(69) = -1.76, p > 0.05.*
+
+
+Now, let's learn how to conduct a t-test when given a dataset: let's look at sample data given for example 9.1 in the book:
+```{r}
+#Create the dataset as a vector of values
+OCD <- c(20,60,48,92,50,82,48,90,30,68,43,54,60,62,94,67,63,85)
+
+```
+
+
+```{r}
+#To run a t-test on this data, we will do the following:
+t.test(OCD, mu=77.43, conf.level=.95) #note that conf.level = 1-alpha
+```
+
+The output for the t-test includes the test statistic, degrees of freedom, and p-value. (We will discuss the confidence interval output next week.) The final value from the output is the sample mean from the data (in this case, 62). Now examine the p-value. Since it is less than alpha (.05) then our decision will be to REJECT THE NULL HYPOTHESIS in favor of the alternative.
+
+Once we have established a statistically significant result, it is appropriate to calculate effect size, using Cohen's d: $$d=\frac{M-\mu_0}{s}$$
+```{r}
+#Find the mean and standard deviation of the sample data, storing as objects:
+mu_samp<-mean(OCD)
+sd_samp<-sd(OCD)
+
+#Then calculate Cohen's d
+cohen_d<- (mu_samp-77.43)/(sd_samp)
+cohen_d
+
+(mean(OCD)-77.43)/(sd(OCD))
+```
+
+Acceptable APA formatted conclusion:
+
+*A one-sample two-tailed t-test revealed a statistically significant difference between our sample mean (M=62) and our population (Mu=77.43), t(17) = -3.13, p < 0.05, d = -0.74. Cohen's d signified a moderate effect.*
+
+
+
+
+**Additional examples:**
+The average annual tuition and fees in the 2009-10 academic year for a sample of 14 private colleges in California was 30,500 with a standard deviation of 4,500. Can we conclude that the average tuition and fees in California is different from 30,000?
+
+H0: M = 30000
+H1: M != 30000
+
+
+```{r}
+tcollege <- (30500-30000)/(4500/sqrt(14))
+
+```
+
+```{r}
+qt(0.025, df=13)
+```
+
+```{r}
+2*pt(tcollege, df=13, lower.tail = FALSE)
+```
+
+FAIL TO REJECT NULL HYPOTHESIS. There is not sufficient evidence that the private college tuition is different from $30,000.
+
+
+
+A simple random sample of 40 recorded speeds is obtained from cars traveling on a section of highway. The sample has a mean 68.4 mph and a standard deviation of 5.7 mph. Test the claim that the average speed of all cars is not 65 mph, the posted speed limit.
+
+H0: M = 65
+H1: M != 65
+
+
+```{r}
+tspeed <- (68.4-65)/(5.7/sqrt(40))
+tspeed
+```
+```{r}
+qt(.025, 39)
+
+2*pt(tspeed, 39, lower.tail = FALSE)
+```
+
+REJECT THE NULL HYPOTHESIS. 
+
+The average speed (M = 68.4) of cars is significantly different from 65 mph, t(39)=3.77, p<0.05.
+
+```{r}
+(68.4-65)/5.7
+```
+
+
+
+
+
+
+
+
+
