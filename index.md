@@ -8,7 +8,10 @@ These are the RStudio files and data files that we will use for our live session
 - Week 2 - [Summary Statistics Rmd File](./live/Week 2_Summary Statistics.Rmd), [Data file](./live/week2data.txt) 
 - Week 3 - [Normal Probability and Z-Scores](./live/Week 3 - Normal Prob and Z-Scores.Rmd)
 - Week 4 - [Sampling Strategy](./live/Week 4 - Sampling Distributions.Rmd)
-- Week 5 - [Hypothesis Testing](./live/Week 5 - Testing.Rmd), [HTML version](./live/Week-5---Testing.html)
+- Week 5 - [Hypothesis Testing: One Sample z-tests](./live/Week 5 - Testing.Rmd), [HTML version](./live/Week-5---Testing.html)
+- Week 6 - [One Sample t-tests and Effect Sizes](./live/Week 6_Effect Size.Rmd), [HTML version](./live/Week-6_Effect-Size.html)
+- Week 7 - [Two Sample t-tests](./live/Week 7_Two Sample.Rmd)
+- Week 8 - No new .Rmd file this week!
 
 
 ## Assignments
@@ -20,6 +23,8 @@ Each assignment is worth 100 points. Assignments should be uploaded to the LMS (
 |:-------------|:------------------|
 | [Assignment 1 Rmd file](./assignments/Assignment 1.Rmd), [Assignment 1 data file](./assignments/phd.txt) | Thursday 5/27 |
 | [Assignment 2 Rmd file](./assignments/Assignment 2.Rmd), [Assignment 2 HTML file](./assignments/Assignment-2.html) | Thursday 6/10 |
+| [Assignment 3 Rmd file](./assignments/Assignment-3.Rmd), [Assignment 3 data file](./assignments/weights.txt) | Thursday 6/24 |
+| [Assignment 4 Rmd file](./assignments/Assignment 4.Rmd), [Color.txt data file](./assignments/color.txt), [Sleep.txt data file](./assignments/sleep.txt) | Thursday 7/8* |
   
 
 ## Additional Useful Files
