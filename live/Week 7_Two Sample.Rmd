@@ -120,4 +120,25 @@ mean(grades$Posttest)
 sd(grades$Posttest)
 ```
 
-APA conclusion: A related-samples t-test revealed a statistically significant difference between the pre-test (M=70.22, SD=9.22) and post-test (M=76.56, SD=9.30); t(8)=3.45, p<0.05, d=1.15. Cohen's d revealed a large effect.
+APA conclusion: A related-samples t-test revealed a statistically significant difference between the pre-test (*M*=70.22, *SD*=9.22) and post-test (*M*=76.56, SD=9.30); t(8)=3.45, p<0.05, d=1.15. Cohen's d revealed a large effect.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

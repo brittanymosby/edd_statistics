@@ -1,7 +1,14 @@
 ---
-title: "Week 9 R Code"
-output: html_notebook
+title: "Week 9 - One-Way ANOVA"
+author: "BL Mosby"
+date: "7/8/21"
+output:
+  html_document: default
 ---
+
+```{r  include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 # Week 9 Live session R code
 
@@ -12,7 +19,7 @@ Let's look at the depression example from async lecture again.
 ```{r setup}
 #First you will need to import the dataset. If you do not know the filepath where your documents are saved, you can use the menu above: Session->Set Working Directory->Choose Directory.
 
-setwd("C:/Users/blmos/Dropbox/School Things/VU Peabody/LLO 8180 - Applied Statistics/R Code")
+setwd("~/GitHub/edd_statistics/live")
 depressed <- read.table("depression.txt", header=T, sep="\t")
 
 head(depressed) #this will display the first few rows of the dataset, to ensure it loaded correctly.
@@ -26,7 +33,6 @@ anova1 <- aov(Depression ~ Treatment, data=depressed)
 
 summary(anova1) #this will display the results
 ```
-
 
 Notice that the *between* groups source is labeled "Treatment" and the *within* groups source is labeled "Residuals" in R. The summary here is a little different than the async PPT, but the values are all here. This summary also includes the p-value for the test, which we will compare to alpha (0.05 in most cases).
 
@@ -54,11 +60,16 @@ mean(depressed$Depression[depressed$Treatment=="Placebo"])
 mean(depressed$Depression[depressed$Treatment=="Med"])
 mean(depressed$Depression[depressed$Treatment=="CBT"])
 mean(depressed$Depression[depressed$Treatment=="Comb"])
+
+sd(depressed$Depression[depressed$Treatment=="Placebo"])
+sd(depressed$Depression[depressed$Treatment=="Med"])
+sd(depressed$Depression[depressed$Treatment=="CBT"])
+sd(depressed$Depression[depressed$Treatment=="Comb"])
 ```
 _Conclusion_:
-A one-way ANOVA at alpha level .05 revealed significant differences between depression scores by the type of treatment group an individual was in, F(3,16)=4.68, p<0.05, $\eta^2$=0.47. Forty-seven percent of the variance in depression scores was accounted for by treatment group. Posthoc analyses (Tukey's HSD) revealed that individuals in the placebo group had significantly higher depression scores (mean=18.6) than each of the other treatment groups (medicine=12.4, CBT=12.6, combination=13.0). There were no other significant pairwise differences.
+An analysis of variance showed that the type of treatment an individual received was significant, *F*(3,16) = 4.68, p < 0.05. Post hoc analyses using Tukey HSD indicated that individuals in the placebo group had significantly higher depression scores (*M* = 18.6, *SD* = 3.0) than medicine only (*M* = 12.4, *SD* = 1.8), CBT (*M* = 12.6, *SD* = 3.4), or a combination of medicine and CBT (*M* = 13, *SD* = 3.7). There were no other significant pairwise differences. The effect size revealed that nearly half (47%) of the variance in depression scores was accounted for by type of treatment group. 
 
----
+
 
 On the other hand, consider the following example: Students were offered one of three rewards (or no reward) for high performance on a test. The promised reward and scores are provided in the rewards.txt file.
 
@@ -75,7 +86,7 @@ summary(anova2)
 
 Here, the p-value is NOT less than alpha, so we fail to reject the null hypothesis. An appropriate APA conclusion might look like:
 
-A one-way ANOVA at alpha level .05 revealed no significant differences between scores by the type of reward a student was offered, F(3,16)=0.22, p>0.05.
+A one-way ANOVA revealed no significant differences between scores by the type of reward a student was offered, F(3,16)=0.22, p>0.05.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now you try! Read the information below.
@@ -84,7 +95,7 @@ Calcium is an essential mineral that regulates the heart, is important for blood
 
 A study is designed to test whether there is a difference in mean daily calcium intake in adults with normal bone density, adults with osteopenia (a low bone density which may lead to osteoporosis) and adults with osteoporosis. Adults 60 years of age with normal bone density, osteopenia and osteoporosis are selected at random from hospital records and invited to participate in the study. Each participant's daily calcium intake is measured based on reported food intake and supplements.
 
-Now, upload the bones data.txt set and run a similar one-way ANOVA analysis. (Hint: copy code from the code chunks above, making sure to change the file/data names. You can create multiple chunks, or run everything at once.)
+Now, upload `bones.txt` and run a similar one-way ANOVA analysis. (You can create multiple chunks, or run everything at once.) Write a conclusion in APA formatting to report your results.
 
 
 
