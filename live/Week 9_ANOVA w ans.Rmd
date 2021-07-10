@@ -47,7 +47,7 @@ Interpreting Tukey HSD: a pairwise comparison is made between each level of the 
 
 Next, we will want to report the effect size. R has a package that will do this for us.
 ```{r effect_size}
-#install.packages("sjstats") You only need to install new packages once per session.
+#install.packages("sjstats") #You only need to install new packages once per session.
 library(sjstats)
 
 eta_sq(anova1)
@@ -99,7 +99,16 @@ A study is designed to test whether there is a difference in mean daily calcium 
 
 Now, upload `bones.txt` and run a similar one-way ANOVA analysis. (You can create multiple chunks, or run everything at once.) Write a conclusion in APA formatting to report your results.
 
+```{r}
+bones <- read.table("bones.txt", header=T, sep="\t")
+head(bones)
+```
 
+```{r}
+bones.anova <- aov(Calcium ~ Density, data=bones)
+summary(bones.anova)
+```
+A one-way analysis of variance revealed no significant difference in mean daily calcium intake in adults with varying bone density, *F*(2,15) = 1.40, p > 0.05.
 
 
 
