@@ -13,6 +13,7 @@ These are the RStudio files and data files that we will use for our live session
 - Week 7 - [Two Sample t-tests](./live/Week 7_Two Sample.Rmd)
 - Week 8 - No new .Rmd file this week!
 - Week 9 - [One-Way ANOVA Rmd File](./live/Week 9_ANOVA.Rmd), [depression.txt](./live/depression.txt), [rewards.txt](./live/rewards.txt), [bones.txt](./live/bones.txt)
+- Week 10 - [Two-Way ANOVA Rmd File](./live/Week 10-2ANOVA.Rmd), [sleep data](./live/sleepdata.txt), [voting data](./live/election.txt)
 
 
 ## Assignments
