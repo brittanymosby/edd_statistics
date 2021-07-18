@@ -5,15 +5,16 @@ output: html_document
 
 # Week 11 Live session R code
 
-This week we will learn how to compute and analyze correlations
-
+This week we will learn how to compute correlations using RStudio.
 
 ```{r}
-#If you know your working directory, use the line below. Otherwise, use the menu: Session > Set Working Directory > Choose Directory
-setwd("C:/Users/blmos/Dropbox/School Things/VU Peabody/LLO 8180 - Applied Statistics/R Code")
+#If you know your working directory, use the line below. 
+#Otherwise, use the menu: Session > Set Working Directory > Choose Directory
+
+setwd() #Don't forget to make sure your .Rmd and data files are in the same folder on your computer/cloud
 ```
 
-Let's look at the phd data from async. First, import the data:
+Let's look at the PhD data from async. First, import the data:
 ```{r}
 phd_data <- read.table("phd.txt", header=TRUE, sep="\t")
 
@@ -22,37 +23,49 @@ head(phd_data)
 Note the variable names and spelling (remember capitalization matters!)
 
 
-Now we will make a scatterplot:
+Now we will make a scatter plot:
 ```{r}
+#The first variable will be the x-axis (independent); the second variable will be the y-axis (dependent)
+
 plot(phd_data$Time, phd_data$Pubs, main="Scatterplot of Time & Publications",
-     xlab="Time Since PhD Grad (in years)", ylab="Publications", pch=19)
+     xlab="Time Since PhD Grad (in years)", ylab="Publications", pch=19) 
+
+#pch specifies the type of point in your scatterplot, see more [here](https://bookdown.org/ndphillips/YaRrr/scatterplot-plot.html)
 ```
 
 We can use R to compute the Pearson Correlation and obtain other values for the hypothesis test
 ```{r}
+#Similar to t.test, this will perform the correlation hypothesis test. Be sure to keep your variables in the same order throughout your code.
+
 cor.test(phd_data$Time, phd_data$Pubs, method=c("pearson"))
 ```
 
-Now, let's look the example from asyc for the Spearman correlation
-
+Now, let's look at the example from asnyc for the Spearman correlation
 ```{r}
+#Recall than Spearman correlation is used for when one of your variables is ranked, like grades here.
 english_data <- read.table("english.txt", header=TRUE, sep="\t")
 
+#Correlation hypothesis test, note we will change the method to "spearman" for this example.
 cor.test(english_data$Words, english_data$Grade, method=c("spearman"))
 ```
 
-Point-Biserial Correlation (note that this code is the same as Pearson's, but the data setup differs)
+Point-Biserial Correlation
 ```{r}
+#Point-biserial correlation is used when one of the variables is dichotomous (yes/no).
 byod_data <- read.table("byod.txt", header=TRUE, sep="\t")
 
-cor.test(byod_data$Grade, byod_data$Byod) #pt-biserial
+
+#In this data, RStudio will recognize that the Byod variable is dichotomous. We do not need to specify the method as we did above.
+cor.test(byod_data$Grade, byod_data$Byod)
 ```
 
-Phi Correlation (note that this code is the same as Pearson's, but the data setup differs)
+Phi Correlation
 ```{r}
+#Finally, phi correlation assumes both variables are dichotomous. Again, we will use the same cor.test command, and RStudio will recognize the dichotomous variables, as long as the dataset has been loaded correctly.
 grad_data <- read.table("graduate.txt", header=TRUE, sep="\t")
 
+#This will create a 2-by-2 table of the variables and number of responses in the data
 table(grad_data)
 
-cor.test(grad_data$Doctorate, grad_data$Business) #phi
+cor.test(grad_data$Doctorate, grad_data$Business)
 ```
