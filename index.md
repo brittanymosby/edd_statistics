@@ -14,6 +14,7 @@ These are the RStudio files and data files that we will use for our live session
 - Week 8 - No new .Rmd file this week!
 - Week 9 - [One-Way ANOVA Rmd File](./live/Week 9_ANOVA.Rmd), [depression.txt](./live/depression.txt), [rewards.txt](./live/rewards.txt), [bones.txt](./live/bones.txt)
 - Week 10 - [Two-Way ANOVA Rmd File](./live/Week 10-2ANOVA.Rmd), [sleep data](./live/sleepdata.txt), [voting data](./live/election.txt)
+- Week 11 - [Correlation Rmd File](./live/Week 11-correlation.Rmd), [PhD data](./live/phd.txt), [English data](./live/english.txt), [BYOD data](./live/byod.txt), [Grad data](./live/graduate.txt)
 
 
 ## Assignments
@@ -27,6 +28,7 @@ Each assignment is worth 100 points. Assignments should be uploaded to the LMS (
 | [Assignment 2 Rmd file](./assignments/Assignment 2.Rmd), [Assignment 2 HTML file](./assignments/Assignment-2.html) | Thursday 6/10 |
 | [Assignment 3 Rmd file](./assignments/Assignment-3.Rmd), [Assignment 3 data file](./assignments/weights.txt) | Thursday 6/24 |
 | [Assignment 4 Rmd file](./assignments/Assignment 4.Rmd), [Color.txt data file](./assignments/color.txt), [Sleep.txt data file](./assignments/sleep.txt) | Thursday 7/8* |
+| [Assignment 5 Rmd file](./assignments/Assignment 5.Rmd), [Difficulty data file](./assignments/difficulty.txt), [Behavior data file](./assignments/behavior.txt)
   
 
 ## Additional Useful Files
