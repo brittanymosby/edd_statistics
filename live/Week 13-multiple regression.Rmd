@@ -9,9 +9,9 @@ This week we will learn how to conduct a multiple linear regression (MLR), using
 
 Let's start by taking a look at the phd data from async
 ```{r setup}
-setwd(...) #insert your path here, or use the dropdown menu to select the folder
+#setwd(...) #insert your path here, or use the dropdown menu to select the folder
 
-#These are special packages we'll use to run the standardized regression and obtain the partial correlation coefficients. You will only need to run this code chunk once per R session.
+#These are special packages we'll use to run the standardized regression and obtain the partial correlation coefficients. You will only need to run this code once per R session.
 install.packages("QuantPsyc")
 install.packages("ppcor")
 
@@ -20,7 +20,7 @@ phd_mlr <- read.table("week13_phd2.txt", header=TRUE, sep="\t")
 
 Recall in async we mean centered salary, let's do that first. (You may want to review the week 1 R code on how to add a variable to an existing dataset).
 ```{r}
-#dataset$NEWVARNAME <- dataset$VAR_CENTER - mean(dataset$VAR_CENTER)
+#This adds a new variable 'SALARY_mc' to the data that is computed by subtracting the mean salary from each of the salary values.
 phd_mlr$SALARY_mc <- phd_mlr$SALARY - mean(phd_mlr$SALARY)
 
 #Now, we will run the MLR with Time, Salary (centered) and citations as predictors for # of pubs

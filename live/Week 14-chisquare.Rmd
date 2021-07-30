@@ -53,7 +53,7 @@ Based upon using a chi-square test for independence, we determined that there wa
 
 
 ```{r}
-#calculating odds ratio for odds of conferring masters for biz vs. non-bus majors
+#calculating odds ratio for odds of conferring masters for biz vs. non-biz majors
 (185/3)/(574/176) 
 #odds of pursuing a masters degree in business compared to pursuing a masters degree in non-business. 
 #odds = 18.91

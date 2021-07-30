@@ -1,0 +1,52 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+enjoy <- read.table("Interactions_Categorical.csv", header=T, sep=",")
+```
+
+
+```{r}
+enjoy.aov <- aov(Enjoyment ~ Food + Condiment + Food:Condiment, data=enjoy)
+summary(enjoy.aov)
+```
+
+```{r}
+interaction.plot(enjoy$Food, enjoy$Condiment, enjoy$Enjoyment,
+                 ylim=range(50,105), xlab="Food",
+                 ylab="Enjoyment",
+                 col=c("blue","red"), main="Plot of Food x Condiment")
+```
+```{r}
+interaction.plot(enjoy$Condiment, enjoy$Food, enjoy$Enjoyment,
+                 ylim=range(50,105), xlab="Condiment",
+                 ylab="Enjoyment",
+                 col=c("blue","red"), main="Plot of Food x Condiment")
+```
+```{r}
+enjoy.must <- subset(enjoy, Condiment == "Mustard")
+
+enjoy.choc <- subset(enjoy, Condiment == "Chocolate Sauce")
+
+must.aov<- aov(Enjoyment~Food, data=enjoy.must)
+summary(must.aov)
+
+choc.aov<- aov(Enjoyment~Food, data=enjoy.choc)
+summary(choc.aov)
+```
+```{r}
+TukeyHSD(must.aov)
+TukeyHSD(choc.aov)
+```
+```{r}
+mean(enjoy.must$Enjoyment[enjoy.must$Food=="Hot Dog"])
+mean(enjoy.must$Enjoyment[enjoy.must$Food=="Ice Cream"])
+```
+```{r}
+mean(enjoy.choc$Enjoyment[enjoy.choc$Food=="Hot Dog"])
+mean(enjoy.choc$Enjoyment[enjoy.choc$Food=="Ice Cream"])
+```
+
+
