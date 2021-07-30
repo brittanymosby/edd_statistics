@@ -32,8 +32,8 @@ Each assignment is worth 100 points. Assignments should be uploaded to the LMS (
 | [Assignment 3 Rmd file](./assignments/Assignment-3.Rmd), [Assignment 3 data file](./assignments/weights.txt) | Thursday 6/24 |
 | [Assignment 4 Rmd file](./assignments/Assignment 4.Rmd), [Color.txt data file](./assignments/color.txt), [Sleep.txt data file](./assignments/sleep.txt) | Thursday 7/8* |
 | [Assignment 5 Rmd file](./assignments/Assignment 5.Rmd), [Difficulty data file](./assignments/difficulty.txt), [Behavior data file](./assignments/behavior.txt) | Monday 7/26 |
-| [Assignment 6 Rmd file](./assignments/Assignment 6.Rmd) | |
-| [Assignment 7 Rmd file](./assignments/Assignment 7.Rmd) | |
+| [Assignment 6 Rmd file](./assignments/Assignment 6.Rmd) | Thursday 8/12 |
+| [Assignment 7 Rmd file](./assignments/Assignment 7.Rmd) | TBA |
   
 
 ## Additional Useful Files
