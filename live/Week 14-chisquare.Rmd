@@ -29,7 +29,7 @@ Now, let's look at the test for independence (is there an association between tw
 ```{r}
 graduate <- read.table("graduate.txt", header=TRUE, sep="\t")
 
-#label the levels of the variables for the table we're building (this is optional - but helfpul to read your table)
+#label the levels of the variables for the table we're building (this is optional - but helpful to read your table)
 graduate$Business <- factor(graduate$Business, levels= c("0","1"), labels = c("NonBiz", "Biz"))
 graduate$Doctorate <- factor(graduate$Doctorate, levels= c("0","1"), labels = c("Masters", "Doctorate"))
 
