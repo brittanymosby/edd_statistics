@@ -17,7 +17,7 @@ These are the RStudio files and data files that we will use for our live session
 - Week 11 - [Correlation Rmd File](./live/Week 11-correlation.Rmd), [PhD data](./live/phd.txt), [English data](./live/english.txt), [BYOD data](./live/byod.txt), [Grad data](./live/graduate.txt)
 - Week 12 - [Simple Linear Regression Rmd File](./live/Week 12-simple regression.Rmd)
 - Week 13 - [Multiple Linear Regression Rmd File](./live/Week 13-multiple regression.Rmd), [PhD 2 data](./live/week13_phd2.txt)
-- Week 14 - [Chi Square Rmd File](./live/Week 14-chisquare.Rmd)
+- Week 14 - [Chi Square Rmd File](./live/Week 14-chisquare.Rmd), [graduate.txt](./live/graduate.txt)
 
 
 ## Assignments
@@ -32,8 +32,8 @@ Each assignment is worth 100 points. Assignments should be uploaded to the LMS (
 | [Assignment 3 Rmd file](./assignments/Assignment-3.Rmd), [Assignment 3 data file](./assignments/weights.txt) | Thursday 6/24 |
 | [Assignment 4 Rmd file](./assignments/Assignment 4.Rmd), [Color.txt data file](./assignments/color.txt), [Sleep.txt data file](./assignments/sleep.txt) | Thursday 7/8* |
 | [Assignment 5 Rmd file](./assignments/Assignment 5.Rmd), [Difficulty data file](./assignments/difficulty.txt), [Behavior data file](./assignments/behavior.txt) | Monday 7/26 |
-| [Assignment 6 Rmd file](./assignments/Assignment 6.Rmd) | Thursday 8/12 |
-| [Assignment 7 Rmd file](./assignments/Assignment 7.Rmd) | TBA |
+| [Assignment 6 Rmd file](./assignments/Assignment 6.Rmd), [Laptop data file](./assignments/laptop.txt), [Activity data file](./assignments/activity.txt) | Thursday 8/12 |
+| [Assignment 7 Rmd file](./assignments/Assignment 7.Rmd), [Blood pressure data file](./assignments/bloodpressure.txt), [Political data file](./assignments/political.txt)| TBA |
   
 
 ## Additional Useful Files
