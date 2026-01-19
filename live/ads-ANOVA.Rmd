@@ -1,0 +1,155 @@
+---
+title: "Another Two-Way ANOVA Example"
+author: "BL Mosby"
+date: "8/2/2021"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This dataset is made up of the number of **ad inquiries** generated from each **section** (news, business, or sports) of a newspaper on each **day of the week**, over the course of four weeks. Our analysis will look at the average number of inquiries across the levels of these two factors to draw conclusions about any statistically significant differences.
+```{r}
+ads <- read.table("ads.txt", header=T, sep="\t")
+
+#Look at the top of the data to see variable names and data formatting
+head(ads)
+```
+We see there are three variables: independent variables `weekday` and `section`, and dependent variable `inquiries`. There are 60 observations (4 weeks * 5 days/week * 3 sections). Once we know independent and dependent variables, it is often helpful to view the data visually-- an interaction plot will give us an idea of potential interactions between the variables.
+```{r}
+#Since weekdays are an ordinal variable, first we create an R `factor` that will ensure the days are displayed in chronological order on the plot:
+day_ord <- factor(ads$weekday, levels=c("Monday","Tuesday","Wednesday","Thursday","Friday"))
+
+#The interaction plot shows the average number of ad inquiries (y) across the days of the week (x), grouped by section (color).
+interaction.plot(day_ord, ads$section, ads$inquiries,
+                 xlab="Weekday", ylab="Number of Ad Inquiries", 
+                 col = c("red", "blue", "green"), 
+                 main="Average Inquiries, by Weekday and Section")
+```
+
+Based on this interaction plot, it is likely that the day of the week and the section of the paper make a significant difference in the number of ad inquiries for this paper.
+
+**What, if any, differences exist in the number of ad inquiries received, based on the section of the paper and the day of the week?**
+
+There are three sets of hypotheses for this two-way ANOVA:
+
+$H_0: \text{The mean number of ad inquiries generated is the same on all weekdays}$ 
+$H_1: \text{At least one weekday has a significantly different number of ad inquiries}$
+
+$H_0: \text{The mean number of ad inquiries generated is the same in all sections}$
+$H_1: \text{At least one section has a significantly different number of ad inquiries}$
+
+$H_0: \text{There is no interaction between weekday and section on the mean number of ad inquiries}$ $H_1: \text{There is an interaction between weekday and section}$
+
+
+```{r}
+#Two-Way ANOVA
+ads.aov <- aov(inquiries ~ section*weekday, data=ads)
+summary(ads.aov)
+```
+We will use .05 as the initial $\alpha$ value (recall this is the a priori likelihood of a Type I error). The results of this two-way ANOVA indicate a significant main effect for the section, *F*(2,42) = 15.30, *p* < .001 (so we reject the first null hypothesis) and a significant main effect for the day of the week, *F*(4, 45) = 20.91, *p* < .001 (reject the second null hypothesis). There is also a significant interaction between the two factors, *F*(8,45) = 9.67, *p* < .001, indicating that the differences in average number of inquiries in each section is dependent on the day of the week (and rejecting the third null hypothesis).
+
+Because the interaction is significant, we will next look for **simple main effects** in each factor, starting with the `section` factor. Therefore, we will run a separate one-way ANOVA within each level of the `weekday` factor (or five in total).
+
+To control for **Type I error** while analyzing the simple main effects of `section`, we will need to adjust $\alpha$ -- since there are five levels in the weekday factor, our new tolerance level will be .01 (.05/5) for these one-way ANOVAs.
+
+```{r}
+#Create subsets of the data, based on the weekday
+Mon_ads <- subset(ads, weekday == "Monday")
+Tue_ads <- subset(ads, weekday == "Tuesday")
+Wed_ads <- subset(ads, weekday == "Wednesday")
+Thu_ads <- subset(ads, weekday == "Thursday")
+Fri_ads <- subset(ads, weekday == "Wednesday")
+
+#View one of the subsets, to ensure it looks the way it should:
+head(Mon_ads)
+```
+There are now a pair of hypotheses for each weekday subset. If we wanted to express the hypotheses for these one-way ANOVAs, they would be:
+$H_0: \text{The mean number of ad inquiries are the same in each section on [weekday]}$
+$H_1: \text{At least one section has a significantly different number of ad inquiries on [weekday]}$
+
+Recall the dependent variable is still `inquiries`, and the simple main effects we are testing for are in the `sections` factor.
+
+```{r}
+#One-way ANOVA for each of the weekday subsets. 
+mon.aov <- aov(inquiries~section, data= Mon_ads)
+tue.aov <- aov(inquiries~section, data= Tue_ads)
+wed.aov <- aov(inquiries~section, data= Wed_ads)
+thu.aov <- aov(inquiries~section, data= Thu_ads)
+fri.aov <- aov(inquiries~section, data= Fri_ads)
+
+summary(mon.aov); summary(tue.aov); summary(wed.aov); summary(thu.aov); summary(fri.aov) 
+```
+Utilizing the adjusted value .01 for $\alpha$, there are significant differences between the mean number of inquiries across the sections on **Monday** and **Thursday** only. The other days have *p* values greater than .01, and so are not statistically significant. Hence, we reject the null hypotheses for Monday and Thursday, and fail to reject the null hypotheses of Tuesday, Wednesday, and Friday. There is not sufficient evidence of a difference in the number of ad inquiries by section on these days.
+
+Finally, to determine which section had significantly more ad inquiries, we do a Tukey HSD post-hoc analysis on the Monday and Thursday data subsets.
+
+```{r}
+TukeyHSD(mon.aov)
+TukeyHSD(thu.aov)
+```
+On Mondays, the difference in average number of ad inquiries is significant between the Business section (*M* = 11.50) and Sports section (*M* = 4.50). There was no significant difference for the News section.
+
+On Thursdays, the difference in average number of ad inquiries is significant between the News section (*M* = 4.25) and the Business section (*M* = 7.75). There was no significant difference in the Sports section.
+
+---
+
+Then, we perform similar analysis to determine **simple main effects** for the `weekday` factor by running a one-way ANOVA for each level of the `section` factor (or three in total). Here, as we did above, to control for Type I error, we will adjust the initial $\alpha$ value by dividing by the number of levels in the factor we are examining (.05/3 = .0167). 
+```{r}
+news_ads = subset(ads, section == "News")
+bus_ads = subset(ads, section == "Business")
+sport_ads = subset(ads, section == "Sports")
+
+head(news_ads)
+```
+There are now a pair of hypotheses for each section subset. If we wanted to express the hypotheses for these one-way ANOVAs, they would be:
+$H_0: \text{The mean number of ad inquiries are the same on each day in [section]}$
+$H_1: \text{At least one day has a significantly different number of ad inquiries in [section]}$
+
+Recall the dependent variable is still `inquiries`, and the simple main effects we are testing for are in the `weekday` factor.
+
+```{r}
+news.aov <- aov(inquiries~weekday, data = news_ads)
+bus.aov <- aov(inquiries~weekday, data = bus_ads)
+sport.aov <- aov(inquiries~weekday, data = sport_ads)
+
+summary(news.aov); summary(bus.aov); summary(sport.aov)
+```
+All three subset ANOVAs have *p* values less than .0167 and so are statistically significant, meaning a Tukey HSD post-hoc analysis is needed to determine which days of the week have the significantly different number of ad inquiries in each section. 
+
+```{r}
+TukeyHSD(news.aov)
+TukeyHSD(bus.aov)
+TukeyHSD(sport.aov)
+```
+Within the **News** section, the number of inquiries is significantly lowest on Thursdays (*M* = 4.25). The number of ads on Mondays are significantly more than Thursdays (*M* = 8.25). And Fridays have significantly more inquiries than Mondays and Thursdays (*M* = 12.5).
+
+In the **Business** section, only Mondays (*M* = 11.5) are significantly different from Thursdays (*M* = 7.75) in terms of average number of ad inquiries.
+
+In the **Sports** section, the ad inquiries on Fridays (*M* = 11.25) are significantly greater than Mondays (*M* = 4.5), Tuesdays (*M* = 6.5), Wednesdays (*M* = 6.75), and Thursdays (*M* = 6.0). The other days of the week did not have a significant difference.
+
+Returning to look at the interaction plot:
+```{r}
+interaction.plot(day_ord, ads$section, ads$inquiries,
+                 xlab="Weekday", ylab="Number of Ad Inquiries", 
+                 col = c("red", "blue", "green"), 
+                 main="Average Inquiries, by Weekday and Section")
+```
+
+The difference in number of ad inquiries by section is most significant on Mondays and Thursdays, with Business greater than Sports on Mondays and Business greater than News on Thursdays.
+
+The difference in number of ad inquiries by weekday is significant in News (Thursday < Monday < Friday); the Business section (Thursday < Monday); and in the Sports section (Mon-Thu < Friday).
+
+With this information, we might conclude:
+- it is best to place business ads on Mondays first, followed by Thursdays, as on these days the number of inquiries is significantly greater than the other sections as well.
+
+- it is best to place news ads on Fridays, followed by Mondays and avoiding Thursdays.
+
+- it is also best to place sports ads on Fridays, although Fridays do not have a significantly higher number of inquiries overall, of the inquiries generated in the sports section, they are greatest on this day.
+
+
+
+
